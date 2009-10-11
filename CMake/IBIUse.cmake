@@ -1,0 +1,22 @@
+IF(NOT IBI_FOUND)
+  MESSAGE(FATAL_ERROR "Something went wrong. You are including IBIUse.cmake but IBI was not found")
+ENDIF(NOT IBI_FOUND)
+
+# Make IBI easier to use
+LINK_DIRECTORIES(${IBI_LIBRARY_DIRS})
+
+INCLUDE_DIRECTORIES (${IBI_INCLUDE_DIRS})
+
+# Load the compiler settings used for IBI.
+IF(IBI_BUILD_SETTINGS_FILE)
+  INCLUDE(CMakeImportBuildSettings)
+  CMAKE_IMPORT_BUILD_SETTINGS(${IBI_BUILD_SETTINGS_FILE})
+ENDIF(IBI_BUILD_SETTINGS_FILE)
+
+#IF (IBI_AUTO)
+#    MESSAGE (STATUS "including all IBI include dirs")
+#    INCLUDE_DIRECTORIES (${IBI_EXTRA_INCLUDE_DIRS})
+#    
+#    MESSAGE (STATUS "including all IBI extra library dirs")
+#    LINK_DIRECTORIES (${IBI_EXTRA_LIBRARY_DIRS})
+#ENDIF (IBI_AUTO)

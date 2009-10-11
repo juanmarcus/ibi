@@ -11,5 +11,5 @@ SET (full_sources
     ${headers}
 )
 
-ADD_LIBRARY(error STATIC ${full_sources})
-TARGET_LINK_LIBRARIES (error ${LIBS})
+ADD_LIBRARY(ibi_error SHARED ${full_sources})
+TARGET_LINK_LIBRARIES (ibi_error ${LIBS})

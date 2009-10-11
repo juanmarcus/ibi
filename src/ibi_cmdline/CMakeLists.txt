@@ -11,5 +11,5 @@ SET (full_sources
     ${headers}
 )
 
-ADD_LIBRARY(cmdline STATIC ${full_sources})
-TARGET_LINK_LIBRARIES (cmdline ${LIBS})
+ADD_LIBRARY(ibi_cmdline SHARED ${full_sources})
+TARGET_LINK_LIBRARIES (ibi_cmdline ${LIBS})

@@ -19,5 +19,5 @@ SET (full_sources
     ${moc_sources}
 )
 
-ADD_LIBRARY(qtopengl STATIC ${full_sources})
-TARGET_LINK_LIBRARIES (qtopengl ${LIBS})
+ADD_LIBRARY(ibi_qt SHARED ${full_sources})
+TARGET_LINK_LIBRARIES (ibi_qt ${LIBS})

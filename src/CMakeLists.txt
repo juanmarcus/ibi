@@ -4,9 +4,9 @@ INCLUDE_DIRECTORIES(
 )
 
 # Build sub libraries
-FOREACH (subdir ${VISIBI_LIBS})
+FOREACH (subdir ${IBI_SUBLIBS})
     ADD_SUBDIRECTORY (${subdir})
-ENDFOREACH (subdir ${VISIBI_LIBS})
+ENDFOREACH (subdir ${IBI_SUBLIBS})
 
 # Build executables
 ADD_SUBDIRECTORY (bin)
