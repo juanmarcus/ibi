@@ -3,3 +3,15 @@ Build System
 
 - Auto detect sub library names 
 - Automatically export all dependencies
+
+
+ImageWidget
+=====================
+
+- Manage several images using automatic layouts
+
+
+Others
+=====================
+
+- Manage widget configurations (saving, loading and changing)
