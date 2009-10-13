@@ -2,3 +2,4 @@ Build System
 =====================
 
 - Auto detect sub library names 
+- Automatically export all dependencies
