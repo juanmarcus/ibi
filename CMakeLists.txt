@@ -72,9 +72,8 @@ ADD_SUBDIRECTORY (src)
 
 #-----------------------------------------------------------------------------
 # Prepare installation
-FOREACH (libname ${IBI_SUBLIBS})
-ENDFOREACH (libname ${IBI_SUBLIBS})
-
+#FOREACH (libname ${IBI_SUBLIBS})
+#ENDFOREACH (libname ${IBI_SUBLIBS})
 
 #-----------------------------------------------------------------------------
 # Help outside projects build IBI projects.

@@ -14,8 +14,11 @@ int main(int argc, char **argv)
 {
 	// Create an application
 	QApplication app(argc, argv);
-	// Create a windows
+	// Create a window
 	QMainWindow w;
+	// Set the central widget to a Imagewidget
+	ImageWidget* imageWidget = new ImageWidget();
+	w.setCentralWidget(imageWidget);
 	// Show the window
 	w.show();
 	// Run the application loop

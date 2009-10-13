@@ -6,6 +6,7 @@ INCLUDE_DIRECTORIES(
 # Build sub libraries
 FOREACH (subdir ${IBI_SUBLIBS})
     ADD_SUBDIRECTORY (${subdir})
+    SET (LIBS ${LIBS} ${subdir})
 ENDFOREACH (subdir ${IBI_SUBLIBS})
 
 # Build executables
