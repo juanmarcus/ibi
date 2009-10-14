@@ -48,7 +48,7 @@ include (${QT_USE_FILE})
 
 #-----------------------------------------------------------------------------
 # Configure libraries 
-set(LIBS ${LIBS} ${Teem_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES})
+set(LIBS ${LIBS} ${Teem_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES} )
 
 #-----------------------------------------------------------------------------
 # Configure destination dirs
@@ -63,7 +63,7 @@ SET (IBI_LIBRARY_PATH "${LIBRARY_OUTPUT_PATH}")
 SET (IBI_SUBLIBS
     ibi_error
     ibi_cmdline
-    ibi_qt
+    ibi_gl2d
 )
 
 #-----------------------------------------------------------------------------
