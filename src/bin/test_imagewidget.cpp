@@ -25,12 +25,18 @@ int main(int argc, char **argv)
 	w.setCentralWidget(imageWidget);
 
 	// Configure actions
-	QAction* action = new QAction(w.tr("Add Image"), &w);
-	action->connect(action, SIGNAL(triggered()), imageWidget, SLOT(addImage()) );
+	QAction* addImageAct = new QAction(w.tr("Add Image"), &w);
+	addImageAct->connect(addImageAct, SIGNAL(triggered()), imageWidget, SLOT(addImage()) );
+	QAction* setLayoutToRowsAct = new QAction(w.tr("Rows"), &w);
+	setLayoutToRowsAct->connect(setLayoutToRowsAct, SIGNAL(triggered()), imageWidget, SLOT(setLayoutModeToRows()) );
+	QAction* setLayoutToColumnsAct = new QAction(w.tr("Columns"), &w);
+	setLayoutToColumnsAct->connect(setLayoutToColumnsAct, SIGNAL(triggered()), imageWidget, SLOT(setLayoutModeToColumns()) );
 
 	// Configure toolbar
 	QToolBar* bar = w.addToolBar(w.tr("Actions"));
-	bar->addAction(action);
+	bar->addAction(addImageAct);
+	bar->addAction(setLayoutToRowsAct);
+	bar->addAction(setLayoutToColumnsAct);
 
 	// Show the window
 	w.show();
