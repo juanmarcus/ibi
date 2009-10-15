@@ -63,6 +63,7 @@ SET (IBI_LIBRARY_PATH "${LIBRARY_OUTPUT_PATH}")
 SET (IBI_SUBLIBS
     ibi_error
     ibi_cmdline
+    ibi_gl
     ibi_gl2d
 )
 
