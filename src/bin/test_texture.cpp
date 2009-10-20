@@ -20,13 +20,30 @@ struct paint
 	}
 };
 
-PaintFunctor p = paint();
+struct resize
+{
+	void operator()(int w, int h)
+	{
+
+	}
+};
+
+struct init
+{
+	void operator()()
+	{
+	}
+};
+
+InitializeFunctor initer = init();
+ResizeFunctor resizer = resize();
+PaintFunctor painter = paint();
 
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
 
-	ibiQtGLWidget w(p);
+	ibiQtGLWidget w(initer, resizer, painter);
 
 	w.showMaximized();
 
