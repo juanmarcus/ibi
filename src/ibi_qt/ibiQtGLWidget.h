@@ -4,19 +4,19 @@
 #include <QtOpenGL/QGLWidget>
 #include <boost/function.hpp>
 
-typedef boost::function<void(void)> Painter;
+typedef boost::function<void(void)> PaintFunctor;
 
 class ibiQtGLWidget: public QGLWidget
 {
 Q_OBJECT
 
 public:
-	ibiQtGLWidget(Painter& a_painter);
+	ibiQtGLWidget(PaintFunctor& a_painter);
 	~ibiQtGLWidget();
 
 	void paintGL();
 private:
-	Painter& painter;
+	PaintFunctor& painter;
 };
 
 #endif // IBIQGLWIDGET_H

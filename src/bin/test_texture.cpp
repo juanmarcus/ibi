@@ -20,7 +20,7 @@ struct paint
 	}
 };
 
-Painter p = paint();
+PaintFunctor p = paint();
 
 int main(int argc, char **argv)
 {

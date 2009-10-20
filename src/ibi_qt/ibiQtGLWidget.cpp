@@ -1,6 +1,6 @@
 #include "ibiQtGLWidget.h"
 
-ibiQtGLWidget::ibiQtGLWidget(Painter& a_painter) :
+ibiQtGLWidget::ibiQtGLWidget(PaintFunctor& a_painter) :
 	QGLWidget(), painter(a_painter)
 {
 
