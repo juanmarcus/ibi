@@ -57,17 +57,6 @@ MARK_AS_ADVANCED (LIBRARY_OUTPUT_PATH)
 SET (IBI_LIBRARY_PATH "${LIBRARY_OUTPUT_PATH}")
 
 #-----------------------------------------------------------------------------
-# Configure IBI sources
-
-# List sub libraries
-SET (IBI_SUBLIBS
-    ibi_error
-    ibi_cmdline
-    ibi_gl
-    ibi_gl2d
-)
-
-#-----------------------------------------------------------------------------
 # Dispatch the build into source subdirectory
 ADD_SUBDIRECTORY (src)
 
@@ -95,12 +84,12 @@ CMAKE_EXPORT_BUILD_SETTINGS(${IBI_BINARY_DIR}/IBIBuildSettings.cmake)
 SET(IBI_CV_CONFIG_TO_ROOT ".")
 SET(IBI_CV_LIBRARY_DEPENDS_FILE ${IBI_BINARY_DIR}/IBILibraryDepends.cmake)
 #SET(IBI_CV_EXECUTABLE_DIRS ${IBI_EXECUTABLE_DIRS})
-MESSAGE (STATUS "${IBI_LIBRARY_PATH}")
+#MESSAGE (STATUS "${IBI_LIBRARY_PATH}")
 SET(IBI_CV_LIBRARY_DIRS ${LIBRARY_OUTPUT_PATH})
 SET(IBI_CV_USE_FILE ${IBI_SOURCE_DIR}/CMake/IBIUse.cmake)
 SET(IBI_CV_INCLUDE_DIRS "${IBI_SOURCE_DIR}/src")
 SET(IBI_CV_BUILD_SETTINGS_FILE ${IBI_BINARY_DIR}/IBIBuildSettings.cmake)
-SET(IBI_CV_BUILT_LIBRARIES ${IBI_SUBLIBS}) # The libraries built by ibi.
+SET(IBI_CV_BUILT_LIBRARIES ibi) # The libraries built by ibi.
 
 CONFIGURE_FILE("${IBI_SOURCE_DIR}/CMake/IBIConfig.cmake"
   "${IBI_BINARY_DIR}/IBIConfig.cmake" @ONLY IMMEDIATE)
