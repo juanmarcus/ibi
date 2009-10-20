@@ -17,3 +17,8 @@ Texture::~Texture()
 {
 	// TODO Auto-generated destructor stub
 }
+
+void Texture::set()
+{
+
+}

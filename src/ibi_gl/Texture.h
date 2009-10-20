@@ -13,6 +13,8 @@ class Texture
 public:
 	Texture();
 	~Texture();
+
+	void set();
 };
 
 #endif /* TEXTURE_H_ */
