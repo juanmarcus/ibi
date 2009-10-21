@@ -27,6 +27,7 @@ public:
 	void setData(void* data);
 	void setDims(int w, int h);
 	void setFormat(FileFormat format);
+	void setDataFormat(GLenum dataformat);
 
 	void apply();
 	void init();
@@ -39,6 +40,9 @@ private:
 
 	// Image format
 	FileFormat fileFormat;
+
+	// Data format
+	GLenum dataformat;
 
 	// Generated OpenGL name
 	GLuint glname;

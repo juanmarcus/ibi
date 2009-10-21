@@ -15,6 +15,7 @@ Texture::Texture(FileFormat a_fileFormat, int a_width, int a_height) :
 {
 	target = GL_TEXTURE_2D;
 	data = NULL;
+	dataformat = GL_UNSIGNED_BYTE;
 }
 
 Texture::~Texture()
@@ -41,6 +42,11 @@ void Texture::setDims(int w, int h)
 void Texture::setFormat(FileFormat format)
 {
 	this->fileFormat = format;
+}
+
+void Texture::setDataFormat(GLenum dataformat)
+{
+	this->dataformat = dataformat;
 }
 
 void Texture::apply()

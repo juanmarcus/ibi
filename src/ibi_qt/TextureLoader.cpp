@@ -66,7 +66,7 @@ void TextureLoader::loadNrrd(Texture& t)
 
 	// Load the data to opengl
 	glTexImage2D(t.target, 0, 1, t.width, t.height, 0, GL_LUMINANCE,
-			GL_UNSIGNED_BYTE, t.data);
+			t.dataformat, t.data);
 
 }
 
@@ -95,7 +95,7 @@ void TextureLoader::loadRaw(Texture& t)
 
 	// Load the data to opengl
 	glTexImage2D(t.target, 0, 3, t.width, t.height, 0, GL_RGB,
-			GL_UNSIGNED_BYTE, tmpdata);
+			t.dataformat, tmpdata);
 
 	// Delete raw data
 	delete[] tmpdata;
