@@ -12,7 +12,7 @@ class GLMode2D
 {
 public:
 	GLMode2D();
-	virtual ~GLMode2D();
+	~GLMode2D();
 
 	void enable();
 	void disable();

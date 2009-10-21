@@ -10,6 +10,7 @@
 #include <teem/nrrd.h>
 #include "ibi_qt/ibiQtFunctorGLWidget.h"
 #include "ibi_gl/Texture.h"
+#include "ibi_gl2d/GLMode2D.h"
 
 using namespace std;
 
@@ -17,24 +18,34 @@ Texture t(FF_NRRD);
 
 struct paint
 {
+	GLMode2D mode;
+
 	void operator()(ibiQtSmartGLWidget* widget)
 	{
+		mode.enable();
+
 		t.apply();
+//		glDisable(GL_TEXTURE_2D);
 
 		glColor3d(1.0, 1.0, 1.0);
 
 		glBegin(GL_QUADS);
 
 		glTexCoord2d(0.0, 0.0);
-		glVertex2d(-1.0, -1.0);
+		glVertex2d(0.0, 0.0);
+
 		glTexCoord2d(1.0, 0.0);
-		glVertex2d(+1.0, -1.0);
+		glVertex2d(1.0, 0.0);
+
 		glTexCoord2d(1.0, 1.0);
-		glVertex2d(+1.0, +1.0);
+		glVertex2d(1.0, 1.0);
+
 		glTexCoord2d(0.0, 1.0);
-		glVertex2d(-1.0, +1.0);
+		glVertex2d(0.0, 1.0);
 
 		glEnd();
+
+		mode.disable();
 	}
 };
 
@@ -42,7 +53,7 @@ struct resize
 {
 	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
 	{
-
+		glViewport(0,0,w,h);
 	}
 };
 

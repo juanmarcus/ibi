@@ -42,7 +42,7 @@ struct resize
 {
 	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
 	{
-
+		glViewport(0, 0, w, h);
 	}
 };
 
