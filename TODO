@@ -20,3 +20,8 @@ Texture
 =====================
 
 -Qt and Raw textures should also load from data (currently only nrrds do)
+
+Main
+=====================
+
+-Create a wrapper around the main method to make portable and handle errors.
