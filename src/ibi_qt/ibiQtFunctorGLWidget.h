@@ -11,9 +11,16 @@ typedef boost::function<void(ibiQtSmartGLWidget* widget, int w, int h)>
 
 struct Resizer_AutoViewport
 {
+	bool keepAspect;
+
+	Resizer_AutoViewport(bool a_keepAspect = true)
+	{
+		keepAspect = a_keepAspect;
+	}
+
 	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
 	{
-		widget->setViewportAuto();
+		widget->setViewportAuto(keepAspect);
 	}
 };
 

@@ -16,7 +16,7 @@ public:
 	void resizeGL(int w, int h);
 
 	void loadTexture(Texture& t);
-	void setViewportAuto();
+	void setViewportAuto(bool keepAspect = true);
 private:
 	bool autoViewport;
 	TextureLoader* textureLoader;

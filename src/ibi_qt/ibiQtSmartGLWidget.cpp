@@ -25,8 +25,18 @@ void ibiQtSmartGLWidget::resizeGL(int w, int h)
 	}
 }
 
-void ibiQtSmartGLWidget::setViewportAuto()
+void ibiQtSmartGLWidget::setViewportAuto(bool keepAspect)
 {
-	// Stupid viewport setter
-	glViewport(0, 0, size().width(), size().height());
+	if (keepAspect)
+	{
+		int width = size().width();
+		int height = size().height();
+		int side = qMin(width, height);
+		glViewport((width - side) / 2, (height - side) / 2, side, side);
+	}
+	else
+	{
+		// Stupid viewport setter
+		glViewport(0, 0, size().width(), size().height());
+	}
 }
