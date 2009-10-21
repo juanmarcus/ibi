@@ -6,17 +6,37 @@
  */
 
 #include <QtGui/QApplication>
+#include <iostream>
 
 #include "ibi_qt/ibiQtGLWidget.h"
 #include "ibi_gl/Texture.h"
+#include "ibi_gl/TextureLoader.h"
+
+using namespace std;
+
+Texture t(FF_RAW);
+TextureLoader loader;
 
 struct paint
 {
-	Texture t;
-
 	void operator()()
 	{
-		t.set();
+		t.apply();
+
+		glColor3d(1.0, 1.0, 1.0);
+
+		glBegin(GL_QUADS);
+
+		glTexCoord2d(0.0, 0.0);
+		glVertex2d(-1.0, -1.0);
+		glTexCoord2d(1.0, 0.0);
+		glVertex2d(+1.0, -1.0);
+		glTexCoord2d(1.0, 1.0);
+		glVertex2d(+1.0, +1.0);
+		glTexCoord2d(0.0, 1.0);
+		glVertex2d(-1.0, +1.0);
+
+		glEnd();
 	}
 };
 
@@ -32,6 +52,9 @@ struct init
 {
 	void operator()()
 	{
+		t.setFilename("data/texture.raw");
+		t.setDims(256, 256);
+		loader.load(t);
 	}
 };
 
