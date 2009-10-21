@@ -19,4 +19,4 @@ Others
 Texture
 =====================
 
--Load Textures from Qt
+-Qt and Raw textures should also load from data (currently only nrrds do)
