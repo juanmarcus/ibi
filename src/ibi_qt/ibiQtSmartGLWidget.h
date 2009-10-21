@@ -13,8 +13,12 @@ public:
 	ibiQtSmartGLWidget();
 	~ibiQtSmartGLWidget();
 
+	void resizeGL(int w, int h);
+
 	void loadTexture(Texture& t);
+	void setViewportAuto();
 private:
+	bool autoViewport;
 	TextureLoader* textureLoader;
 };
 

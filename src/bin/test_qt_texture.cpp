@@ -38,14 +38,6 @@ struct paint
 	}
 };
 
-struct resize
-{
-	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
-	{
-		glViewport(0, 0, w, h);
-	}
-};
-
 struct init
 {
 	void operator()(ibiQtSmartGLWidget* widget)
@@ -56,7 +48,7 @@ struct init
 };
 
 InitializeFunctor initer = init();
-ResizeFunctor resizer = resize();
+ResizeFunctor resizer = Resizer_AutoViewport();
 PaintFunctor painter = paint();
 
 int main(int argc, char **argv)

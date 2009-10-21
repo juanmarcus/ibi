@@ -9,6 +9,14 @@ typedef boost::function<void(ibiQtSmartGLWidget* widget)> InitializeFunctor;
 typedef boost::function<void(ibiQtSmartGLWidget* widget, int w, int h)>
 		ResizeFunctor;
 
+struct Resizer_AutoViewport
+{
+	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
+	{
+		widget->setViewportAuto();
+	}
+};
+
 class ibiQtFunctorGLWidget: public ibiQtSmartGLWidget
 {
 Q_OBJECT
