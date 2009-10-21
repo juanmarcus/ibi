@@ -14,6 +14,7 @@ Texture::Texture(FileFormat a_fileFormat, int a_width, int a_height) :
 	fileFormat(a_fileFormat), glname(0), width(a_width), height(a_height)
 {
 	target = GL_TEXTURE_2D;
+	data = NULL;
 }
 
 Texture::~Texture()
@@ -24,6 +25,11 @@ Texture::~Texture()
 void Texture::setFilename(string filename)
 {
 	this->filename = filename;
+}
+
+void Texture::setData(void* data)
+{
+	this->data = data;
 }
 
 void Texture::setDims(int w, int h)

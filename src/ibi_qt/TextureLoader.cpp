@@ -53,7 +53,17 @@ void TextureLoader::loadQt(Texture& t)
 
 void TextureLoader::loadNrrd(Texture& t)
 {
-	throw Exception("unimplemented.");
+	if (!t.width || !t.height)
+	{
+		throw Exception("Nrrd format requires width and height parameters.");
+	}
+	// Initialize texture
+	t.init();
+
+	// Load the data to opengl
+	glTexImage2D(t.target, 0, 1, t.width, t.height, 0, GL_LUMINANCE,
+			GL_UNSIGNED_BYTE, t.data);
+
 }
 
 void TextureLoader::loadRaw(Texture& t)
@@ -76,13 +86,13 @@ void TextureLoader::loadRaw(Texture& t)
 	}
 
 	// Load the data to memory
-	char* data = new char[t.width * t.height * 3];
-	infile.read(data, 256 * 256 * 3);
+	char* tmpdata = new char[t.width * t.height * 3];
+	infile.read(tmpdata, 256 * 256 * 3);
 
 	// Load the data to opengl
 	glTexImage2D(t.target, 0, 3, t.width, t.height, 0, GL_RGB,
-			GL_UNSIGNED_BYTE, data);
+			GL_UNSIGNED_BYTE, tmpdata);
 
 	// Delete raw data
-	delete[] data;
+	delete[] tmpdata;
 }

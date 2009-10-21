@@ -24,6 +24,7 @@ public:
 	~Texture();
 
 	void setFilename(std::string filename);
+	void setData(void* data);
 	void setDims(int w, int h);
 	void setFormat(FileFormat format);
 
@@ -32,6 +33,9 @@ public:
 private:
 	// Texture filename
 	std::string filename;
+
+	// Data
+	void* data;
 
 	// Image format
 	FileFormat fileFormat;
