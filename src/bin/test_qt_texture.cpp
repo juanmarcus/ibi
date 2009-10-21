@@ -8,13 +8,13 @@
 #include <QtGui/QApplication>
 #include <iostream>
 
-#include "ibi_qt/ibiQtGLWidget.h"
+#include "ibi_qt/ibiQtFunctorGLWidget.h"
 #include "ibi_gl/Texture.h"
 #include "ibi_gl/TextureLoader.h"
 
 using namespace std;
 
-Texture t(FF_RAW);
+Texture t(FF_QT);
 TextureLoader loader;
 
 struct paint
@@ -52,8 +52,7 @@ struct init
 {
 	void operator()()
 	{
-		t.setFilename("data/texture.raw");
-		t.setDims(256, 256);
+		t.setFilename("data/image.png");
 		loader.load(t);
 	}
 };
@@ -66,7 +65,7 @@ int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
 
-	ibiQtGLWidget w(initer, resizer, painter);
+	ibiQtFunctorGLWidget w(initer, resizer, painter);
 
 	w.showMaximized();
 

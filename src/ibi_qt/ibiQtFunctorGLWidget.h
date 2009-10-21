@@ -1,21 +1,21 @@
 #ifndef IBIQGLWIDGET_H
 #define IBIQGLWIDGET_H
 
-#include <QtOpenGL/QGLWidget>
 #include <boost/function.hpp>
+#include "ibiQtSmartGLWidget.h"
 
 typedef boost::function<void(void)> PaintFunctor;
 typedef boost::function<void(void)> InitializeFunctor;
 typedef boost::function<void(int w, int h)> ResizeFunctor;
 
-class ibiQtGLWidget: public QGLWidget
+class ibiQtFunctorGLWidget: public ibiQtSmartGLWidget
 {
 Q_OBJECT
 
 public:
-	ibiQtGLWidget(InitializeFunctor& init, ResizeFunctor& resize,
+	ibiQtFunctorGLWidget(InitializeFunctor& init, ResizeFunctor& resize,
 			PaintFunctor& a_painter);
-	~ibiQtGLWidget();
+	~ibiQtFunctorGLWidget();
 
 	void paintGL();
 	void initializeGL();

@@ -7,6 +7,7 @@
 
 #include "TextureLoader.h"
 #include "ibi_error/Exception.h"
+#include <QtOpenGL/QGLContext>
 #include <fstream>
 
 using namespace std;
@@ -40,7 +41,15 @@ void TextureLoader::load(Texture& t)
 
 void TextureLoader::loadQt(Texture& t)
 {
-	throw Exception("unimplemented.");
+	// Qt initializes the texture for us
+	//t.init();
+
+	//	t.glname = QGLContext::currentContext()->bindTexture(QImage(
+	//			t.filename.c_str()), t.target);
+	if (!t.glname)
+	{
+		throw Exception("Error loading texture with Qt.");
+	}
 }
 
 void TextureLoader::loadNrrd(Texture& t)
