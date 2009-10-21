@@ -16,7 +16,7 @@
 class TextureLoader
 {
 public:
-	TextureLoader(QGLWidget* glwidget);
+	TextureLoader(QGLWidget* glwidget = 0);
 	~TextureLoader();
 
 	void load(Texture& t);
