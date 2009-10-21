@@ -4,9 +4,10 @@
 #include <boost/function.hpp>
 #include "ibiQtSmartGLWidget.h"
 
-typedef boost::function<void(void)> PaintFunctor;
-typedef boost::function<void(void)> InitializeFunctor;
-typedef boost::function<void(int w, int h)> ResizeFunctor;
+typedef boost::function<void(ibiQtSmartGLWidget* widget)> PaintFunctor;
+typedef boost::function<void(ibiQtSmartGLWidget* widget)> InitializeFunctor;
+typedef boost::function<void(ibiQtSmartGLWidget* widget, int w, int h)>
+		ResizeFunctor;
 
 class ibiQtFunctorGLWidget: public ibiQtSmartGLWidget
 {

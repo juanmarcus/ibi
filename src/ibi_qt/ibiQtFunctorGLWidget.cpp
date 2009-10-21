@@ -15,15 +15,15 @@ ibiQtFunctorGLWidget::~ibiQtFunctorGLWidget()
 
 void ibiQtFunctorGLWidget::paintGL()
 {
-	painter();
+	painter(this);
 }
 
 void ibiQtFunctorGLWidget::initializeGL()
 {
-	initer();
+	initer(this);
 }
 
 void ibiQtFunctorGLWidget::resizeGL(int w, int h)
 {
-	resizer(w, h);
+	resizer(this, w, h);
 }

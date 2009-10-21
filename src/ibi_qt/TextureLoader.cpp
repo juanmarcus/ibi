@@ -7,12 +7,12 @@
 
 #include "TextureLoader.h"
 #include "ibi_error/Exception.h"
-#include <QtOpenGL/QGLContext>
 #include <fstream>
 
 using namespace std;
 
-TextureLoader::TextureLoader()
+TextureLoader::TextureLoader(QGLWidget* a_glwidget) :
+	glwidget(a_glwidget)
 {
 }
 
@@ -44,8 +44,7 @@ void TextureLoader::loadQt(Texture& t)
 	// Qt initializes the texture for us
 	//t.init();
 
-	//	t.glname = QGLContext::currentContext()->bindTexture(QImage(
-	//			t.filename.c_str()), t.target);
+	t.glname = glwidget->bindTexture(QImage(t.filename.c_str()), t.target);
 	if (!t.glname)
 	{
 		throw Exception("Error loading texture with Qt.");

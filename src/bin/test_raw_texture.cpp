@@ -10,16 +10,14 @@
 
 #include "ibi_qt/ibiQtFunctorGLWidget.h"
 #include "ibi_gl/Texture.h"
-#include "ibi_gl/TextureLoader.h"
 
 using namespace std;
 
 Texture t(FF_RAW);
-TextureLoader loader;
 
 struct paint
 {
-	void operator()()
+	void operator()(ibiQtSmartGLWidget* widget)
 	{
 		t.apply();
 
@@ -42,7 +40,7 @@ struct paint
 
 struct resize
 {
-	void operator()(int w, int h)
+	void operator()(ibiQtSmartGLWidget* widget, int w, int h)
 	{
 
 	}
@@ -50,11 +48,11 @@ struct resize
 
 struct init
 {
-	void operator()()
+	void operator()(ibiQtSmartGLWidget* widget)
 	{
 		t.setFilename("data/texture.raw");
 		t.setDims(256, 256);
-		loader.load(t);
+		widget->loadTexture(t);
 	}
 };
 

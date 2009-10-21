@@ -2,6 +2,8 @@
 #define IBIQTSMARTGLWIDGET_H
 
 #include <QtOpenGL/QGLWidget>
+#include "ibi_gl/Texture.h"
+#include "TextureLoader.h"
 
 class ibiQtSmartGLWidget: public QGLWidget
 {
@@ -11,6 +13,9 @@ public:
 	ibiQtSmartGLWidget();
 	~ibiQtSmartGLWidget();
 
+	void loadTexture(Texture& t);
+private:
+	TextureLoader* textureLoader;
 };
 
 #endif // IBIQTSMARTGLWIDGET_H
