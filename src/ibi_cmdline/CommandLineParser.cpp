@@ -2,7 +2,7 @@
  * CommandLineParser.cpp
  *
  *  Created on: Oct 8, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #include "CommandLineParser.h"

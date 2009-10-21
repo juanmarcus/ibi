@@ -2,7 +2,7 @@
  * TextureLoader.cpp
  *
  *  Created on: Oct 15, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #include "TextureLoader.h"

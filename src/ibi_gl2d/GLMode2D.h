@@ -2,7 +2,7 @@
  * GLMode2D.h
  *
  *  Created on: Oct 14, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #ifndef GLMODE2D_H_

@@ -2,7 +2,7 @@
  * TextureLoader.h
  *
  *  Created on: Oct 15, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #ifndef TEXTURELOADER_H_

@@ -2,7 +2,7 @@
  * GLMode2D.cpp
  *
  *  Created on: Oct 14, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #include "GLMode2D.h"

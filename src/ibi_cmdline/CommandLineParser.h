@@ -2,7 +2,7 @@
  * CommandLineParser.h
  *
  *  Created on: Oct 8, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #ifndef COMMANDLINEPARSER_H_

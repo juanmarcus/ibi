@@ -2,7 +2,7 @@
  * Exception.h
  *
  *  Created on: Oct 9, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #ifndef EXCEPTION_H_

@@ -2,7 +2,7 @@
  * Exception.cpp
  *
  *  Created on: Oct 9, 2009
- *      Author: juanmarcus
+ *      Author: Juan Ibiapina
  */
 
 #include "Exception.h"
