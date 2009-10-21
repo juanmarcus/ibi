@@ -43,6 +43,10 @@ void TextureLoader::loadQt(Texture& t)
 {
 	// Qt initializes the texture for us
 	//t.init();
+	if (!glwidget)
+	{
+		throw Exception("Error loading Qt texture. GLWidget not set.");
+	}
 
 	t.glname = glwidget->bindTexture(QImage(t.filename.c_str()), t.target);
 	if (!t.glname)
