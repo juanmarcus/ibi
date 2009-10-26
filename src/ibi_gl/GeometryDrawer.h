@@ -16,7 +16,7 @@ public:
 	GeometryDrawer();
 	~GeometryDrawer();
 
-	void draw(Ray& ray);
+	void draw(Ray& ray, float length, float radius = -1.0, int nbSubdivisions = 12);
 };
 
 #endif /* GEOMETRYDRAWER_H_ */

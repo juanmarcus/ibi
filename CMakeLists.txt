@@ -30,13 +30,26 @@ SET (CMAKE_VERBOSE_MAKEFILE ON)
 find_package (Teem REQUIRED)
 find_package (Qt4 REQUIRED)
 find_package (Boost 1.39.0 COMPONENTS program_options REQUIRED)
+find_package (QGLViewer REQUIRED)
 
 #-----------------------------------------------------------------------------
 # Use files
 include (${Teem_USE_FILE})
 set(QT_USE_QTOPENGL TRUE)
-#set(QT_USE_QTXML TRUE)
+set(QT_USE_QTXML TRUE)
 include (${QT_USE_FILE})
+
+#-----------------------------------------------------------------------------
+# Include directories
+INCLUDE_DIRECTORIES (
+    ${QGLVIEWER_INCLUDE_DIR}
+)
+
+#-----------------------------------------------------------------------------
+# Definitions
+ADD_DEFINITIONS(
+    ${QGLVIEWER_DEFINITIONS}
+)
 
 #-----------------------------------------------------------------------------
 # Save include directories
@@ -48,7 +61,7 @@ include (${QT_USE_FILE})
 
 #-----------------------------------------------------------------------------
 # Configure libraries 
-set(LIBS ${LIBS} ${Teem_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES} )
+set(LIBS ${LIBS} ${Teem_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES} ${QGLVIEWER_LIBRARY})
 
 #-----------------------------------------------------------------------------
 # Configure destination dirs

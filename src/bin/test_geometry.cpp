@@ -6,41 +6,44 @@
  */
 
 #include <QtGui/QApplication>
+#include <QGLViewer/qglviewer.h>
 #include <iostream>
 
-#include "ibi_qt/ibiQtFunctorGLWidget.h"
 #include "ibi_geometry/Ray.h"
 #include "ibi_gl/GeometryDrawer.h"
 
 using namespace std;
 
-GeometryDrawer drawer;
-Ray ray;
-
-struct paint
+class Viewer: public QGLViewer
 {
-	void operator()(ibiQtSmartGLWidget* widget)
-	{
-		drawer.draw(ray);
-	}
-};
 
-struct init
-{
-	void operator()(ibiQtSmartGLWidget* widget)
+public:
+	Viewer(QWidget* parent = 0) :
+		QGLViewer(parent)
 	{
-	}
-};
 
-InitializeFunctor initer = init();
-ResizeFunctor resizer = Resizer_AutoViewport();
-PaintFunctor painter = paint();
+	}
+
+	~Viewer()
+	{
+
+	}
+
+	void draw()
+	{
+		drawer.draw(ray, 1);
+	}
+
+private:
+	GeometryDrawer drawer;
+	Ray ray;
+};
 
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
 
-	ibiQtFunctorGLWidget w(initer, resizer, painter);
+	Viewer w;
 
 	w.showMaximized();
 
