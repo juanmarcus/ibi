@@ -24,6 +24,9 @@ public:
 	{
 		return Real(fabs(fValue));
 	}
+
+	static const Real POS_INFINITY;
+	static const Real NEG_INFINITY;
 };
 
 #endif /* MATH_H_ */
