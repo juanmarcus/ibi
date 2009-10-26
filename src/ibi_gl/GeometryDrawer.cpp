@@ -10,13 +10,12 @@
 
 GeometryDrawer::GeometryDrawer()
 {
-	// TODO Auto-generated constructor stub
 
 }
 
 GeometryDrawer::~GeometryDrawer()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
 void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
@@ -36,4 +35,18 @@ void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 	gluCylinder(quadric, coneRadiusCoef * radius, 0.0, head * length,
 			nbSubdivisions, 1);
 	glTranslatef(0.0, 0.0, -length * (1.0 - head));
+}
+
+void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)
+{
+	static GLUquadric* quadric = gluNewQuadric();
+
+	assert(radius > 0.0);
+
+	glPushMatrix();
+
+	glTranslatef(point.x, point.y, point.z);
+	gluSphere(quadric, radius, nbSubdivisions, nbSubdivisions);
+
+	glPopMatrix();
 }
