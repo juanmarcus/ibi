@@ -31,7 +31,7 @@ public:
 
 	void draw()
 	{
-		drawer.draw(ray, 1);
+		drawer.drawRay(ray, 1);
 	}
 
 private:

@@ -19,7 +19,7 @@ GeometryDrawer::~GeometryDrawer()
 	// TODO Auto-generated destructor stub
 }
 
-void GeometryDrawer::draw(Ray& ray, float length, float radius,
+void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 		int nbSubdivisions)
 {
 	static GLUquadric* quadric = gluNewQuadric();
