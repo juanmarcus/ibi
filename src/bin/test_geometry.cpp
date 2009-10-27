@@ -38,17 +38,18 @@ public:
 		setSceneRadius(2.0);
 		//	restoreStateFromFile();
 
+		ray.setDirection(Vector3(1.0,1.0,1.0));
 	}
 
 	void draw()
 	{
 		// Change to frame coordinate system
-		glPushMatrix();
-		glMultMatrixd(manipulatedFrame()->matrix());
+//		glPushMatrix();
+//		glMultMatrixd(manipulatedFrame()->matrix());
 		// Draw ray
 		drawer.drawRay(ray, 2, 0.005);
 		// Change back to world coordinate system
-		glPopMatrix();
+//		glPopMatrix();
 
 		drawer.drawPoint(point1);
 

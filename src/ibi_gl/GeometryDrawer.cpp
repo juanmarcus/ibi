@@ -6,6 +6,7 @@
  */
 
 #include "GeometryDrawer.h"
+#include "GL.h"
 #include <GL/glu.h>
 
 GeometryDrawer::GeometryDrawer()
@@ -18,8 +19,7 @@ GeometryDrawer::~GeometryDrawer()
 
 }
 
-void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
-		int nbSubdivisions)
+void GeometryDrawer::drawArrow(float length, float radius, int nbSubdivisions)
 {
 	static GLUquadric* quadric = gluNewQuadric();
 
@@ -35,6 +35,25 @@ void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 	gluCylinder(quadric, coneRadiusCoef * radius, 0.0, head * length,
 			nbSubdivisions, 1);
 	glTranslatef(0.0, 0.0, -length * (1.0 - head));
+}
+
+void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
+		int nbSubdivisions)
+{
+	glPushMatrix();
+
+	// Calculate desired rotation
+	Quaternion q = Vector3::UNIT_Z.getRotationTo(ray.getDirection());
+
+	// Change transformation
+	GL::Translate(ray.getOrigin());
+	GL::Rotate(q);
+
+	// Draw the arrow
+	drawArrow(ray.getDirection().length(), radius, nbSubdivisions);
+
+	glPopMatrix();
+
 }
 
 void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)

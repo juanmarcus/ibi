@@ -17,6 +17,8 @@ public:
 	GeometryDrawer();
 	~GeometryDrawer();
 
+	void drawArrow(float length, float radius = -1.0, int nbSubdivisions = 12);
+
 	void drawRay(Ray& ray, float length, float radius = -1.0, int nbSubdivisions = 12);
 	void drawPoint(Vector3& point, float radius = 0.01, int nbSubdivisions = 12);
 };
