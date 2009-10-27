@@ -11,11 +11,13 @@
 #include "ibi_common/common.h"
 #include <cassert>
 #include "ibi_math/Math.h"
+#include "Quaternion.h"
 
 class Vector3
 {
 public:
 	Real x, y, z;
+
 public:
 	inline Vector3()
 	{
@@ -24,6 +26,52 @@ public:
 	inline Vector3(const Real fX, const Real fY, const Real fZ) :
 		x(fX), y(fY), z(fZ)
 	{
+	}
+
+	inline explicit Vector3(const Real afCoordinate[3]) :
+		x(afCoordinate[0]), y(afCoordinate[1]), z(afCoordinate[2])
+	{
+	}
+
+	inline explicit Vector3(const int afCoordinate[3])
+	{
+		x = (Real) afCoordinate[0];
+		y = (Real) afCoordinate[1];
+		z = (Real) afCoordinate[2];
+	}
+
+	inline explicit Vector3(Real* const r) :
+		x(r[0]), y(r[1]), z(r[2])
+	{
+	}
+
+	inline explicit Vector3(const Real scaler) :
+		x(scaler), y(scaler), z(scaler)
+	{
+	}
+
+	inline Real operator [](const size_t i) const
+	{
+		assert( i < 3 );
+
+		return *(&x + i);
+	}
+
+	inline Real& operator [](const size_t i)
+	{
+		assert( i < 3 );
+
+		return *(&x + i);
+	}
+	/// Pointer accessor for direct copying
+	inline Real* ptr()
+	{
+		return &x;
+	}
+	/// Pointer accessor for direct copying
+	inline const Real* ptr() const
+	{
+		return &x;
 	}
 
 	/** Assigns the value of the other vector.
@@ -81,7 +129,7 @@ public:
 
 	inline Vector3 operator /(const Real fScalar) const
 	{
-		assert(fScalar != 0.0);
+		assert( fScalar != 0.0 );
 
 		Real fInv = 1.0 / fScalar;
 
@@ -192,7 +240,7 @@ public:
 
 	inline Vector3& operator /=(const Real fScalar)
 	{
-		assert(fScalar != 0.0);
+		assert( fScalar != 0.0 );
 
 		Real fInv = 1.0 / fScalar;
 
@@ -278,7 +326,7 @@ public:
 	 vec Vector with which to calculate the dot product (together
 	 with this one).
 	 @returns
-	 A Real representing the dot product value.
+	 A float representing the dot product value.
 	 */
 	inline Real dotProduct(const Vector3& vec) const
 	{
@@ -447,8 +495,193 @@ public:
 
 		return perp;
 	}
+	/** Generates a new random vector which deviates from this vector by a
+	 given angle in a random direction.
+	 @remarks
+	 This method assumes that the random number generator has already
+	 been seeded appropriately.
+	 @param
+	 angle The angle at which to deviate
+	 @param
+	 up Any vector perpendicular to this one (which could generated
+	 by cross-product of this vector and any other non-colinear
+	 vector). If you choose not to provide this the function will
+	 derive one on it's own, however if you provide one yourself the
+	 function will be faster (this allows you to reuse up vectors if
+	 you call this method more than once)
+	 @returns
+	 A random vector which deviates from this vector by angle. This
+	 vector will not be normalised, normalise it if you wish
+	 afterwards.
+	 */
+	inline Vector3 randomDeviant(const Radian& angle, const Vector3& up =
+			Vector3::ZERO) const
+	{
+		Vector3 newUp;
 
-	// Special points and directions
+		if (up == Vector3::ZERO)
+		{
+			// Generate an up vector
+			newUp = this->perpendicular();
+		}
+		else
+		{
+			newUp = up;
+		}
+
+		// Rotate up vector by random amount around this
+		Quaternion q;
+		q.FromAngleAxis(Radian(Math::UnitRandom() * Math::TWO_PI), *this);
+		newUp = q * newUp;
+
+		// Finally rotate this by given angle around randomised up
+		q.FromAngleAxis(angle, newUp);
+		return q * (*this);
+	}
+
+	/** Gets the angle between 2 vectors.
+	 @remarks
+	 Vectors do not have to be unit-length but must represent directions.
+	 */
+	inline Radian angleBetween(const Vector3& dest)
+	{
+		Real lenProduct = length() * dest.length();
+
+		// Divide by zero check
+		if (lenProduct < 1e-6f)
+			lenProduct = 1e-6f;
+
+		Real f = dotProduct(dest) / lenProduct;
+
+		f = Math::Clamp(f, (Real) -1.0, (Real) 1.0);
+		return Math::ACos(f);
+
+	}
+	/** Gets the shortest arc quaternion to rotate this vector to the destination
+	 vector.
+	 @remarks
+	 If you call this with a dest vector that is close to the inverse
+	 of this vector, we will rotate 180 degrees around the 'fallbackAxis'
+	 (if specified, or a generated axis if not) since in this case
+	 ANY axis of rotation is valid.
+	 */
+	Quaternion getRotationTo(const Vector3& dest, const Vector3& fallbackAxis =
+			Vector3::ZERO) const
+	{
+		// Based on Stan Melax's article in Game Programming Gems
+		Quaternion q;
+		// Copy, since cannot modify local
+		Vector3 v0 = *this;
+		Vector3 v1 = dest;
+		v0.normalise();
+		v1.normalise();
+
+		Real d = v0.dotProduct(v1);
+		// If dot == 1, vectors are the same
+		if (d >= 1.0f)
+		{
+			return Quaternion::IDENTITY;
+		}
+		if (d < (1e-6f - 1.0f))
+		{
+			if (fallbackAxis != Vector3::ZERO)
+			{
+				// rotate 180 degrees about the fallback axis
+				q.FromAngleAxis(Radian(Math::PI), fallbackAxis);
+			}
+			else
+			{
+				// Generate an axis
+				Vector3 axis = Vector3::UNIT_X.crossProduct(*this);
+				if (axis.isZeroLength()) // pick another if colinear
+					axis = Vector3::UNIT_Y.crossProduct(*this);
+				axis.normalise();
+				q.FromAngleAxis(Radian(Math::PI), axis);
+			}
+		}
+		else
+		{
+			Real s = Math::Sqrt((1 + d) * 2);
+			Real invs = 1 / s;
+
+			Vector3 c = v0.crossProduct(v1);
+
+			q.x = c.x * invs;
+			q.y = c.y * invs;
+			q.z = c.z * invs;
+			q.w = s * 0.5;
+			q.normalise();
+		}
+		return q;
+	}
+
+	/** Returns true if this vector is zero length. */
+	inline bool isZeroLength(void) const
+	{
+		Real sqlen = (x * x) + (y * y) + (z * z);
+		return (sqlen < (1e-06 * 1e-06));
+
+	}
+
+	/** As normalise, except that this vector is unaffected and the
+	 normalised vector is returned as a copy. */
+	inline Vector3 normalisedCopy(void) const
+	{
+		Vector3 ret = *this;
+		ret.normalise();
+		return ret;
+	}
+
+	/** Calculates a reflection vector to the plane with the given normal .
+	 @remarks NB assumes 'this' is pointing AWAY FROM the plane, invert if it is not.
+	 */
+	inline Vector3 reflect(const Vector3& normal) const
+	{
+		return Vector3(*this - (2 * this->dotProduct(normal) * normal));
+	}
+
+	/** Returns whether this vector is within a positional tolerance
+	 of another vector.
+	 @param rhs The vector to compare with
+	 @param tolerance The amount that each element of the vector may vary by
+	 and still be considered equal
+	 */
+	inline bool positionEquals(const Vector3& rhs, Real tolerance = 1e-03) const
+	{
+		return Math::RealEqual(x, rhs.x, tolerance) && Math::RealEqual(y,
+				rhs.y, tolerance) && Math::RealEqual(z, rhs.z, tolerance);
+
+	}
+
+	/** Returns whether this vector is within a positional tolerance
+	 of another vector, also take scale of the vectors into account.
+	 @param rhs The vector to compare with
+	 @param tolerance The amount (related to the scale of vectors) that distance
+	 of the vector may vary by and still be considered close
+	 */
+	inline bool positionCloses(const Vector3& rhs, Real tolerance = 1e-03f) const
+	{
+		return squaredDistance(rhs) <= (squaredLength() + rhs.squaredLength())
+				* tolerance;
+	}
+
+	/** Returns whether this vector is within a directional tolerance
+	 of another vector.
+	 @param rhs The vector to compare with
+	 @param tolerance The maximum angle by which the vectors may vary and
+	 still be considered equal
+	 @note Both vectors should be normalised.
+	 */
+	inline bool directionEquals(const Vector3& rhs, const Radian& tolerance) const
+	{
+		Real dot = dotProduct(rhs);
+		Radian angle = Math::ACos(dot);
+
+		return Math::Abs(angle.valueRadians()) <= tolerance.valueRadians();
+
+	}
+
+	// special points
 	static const Vector3 ZERO;
 	static const Vector3 UNIT_X;
 	static const Vector3 UNIT_Y;
@@ -457,6 +690,7 @@ public:
 	static const Vector3 NEGATIVE_UNIT_Y;
 	static const Vector3 NEGATIVE_UNIT_Z;
 	static const Vector3 UNIT_SCALE;
+
 };
 
 #endif /* VECTOR3_H_ */
