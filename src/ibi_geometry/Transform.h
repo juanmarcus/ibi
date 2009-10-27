@@ -17,8 +17,10 @@ public:
 	static inline Ray TransformRay(Matrix4& mat, Ray& ray)
 	{
 		Ray rray;
+		Matrix3 mrot;
 		rray.setOrigin(mat * ray.getOrigin());
-		rray.setDirection(mat.inverse().transpose() * ray.getDirection());
+		mat.extract3x3Matrix(mrot);
+		rray.setDirection(mrot * ray.getDirection());
 		return rray;
 	}
 };
