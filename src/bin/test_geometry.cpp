@@ -12,6 +12,7 @@
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Matrix4.h"
+#include "ibi_geometry/AxisAlignedBox.h"
 #include "ibi_gl/GeometryDrawer.h"
 #include "ibi_geometry/Transform.h"
 
@@ -38,8 +39,10 @@ public:
 		setManipulatedFrame(new qglviewer::ManipulatedFrame());
 
 		setSceneRadius(2.0);
+		showEntireScene();
 		//	restoreStateFromFile();
 
+		box.setExtents(-1, -1, -1, 1, 1, 1);
 	}
 
 	void draw()
@@ -49,25 +52,23 @@ public:
 				mod[13], mod[2], mod[6], mod[10], mod[14], mod[3], mod[7],
 				mod[11], mod[15]);
 
-		Vector3 p = m.getTrans();
-		drawer.drawPoint(p);
-
+		// Transform ray
 		Ray tray = Transform::TransformRay(m, ray);
-		// Change to frame coordinate system
-		//		glPushMatrix();
-		//		glMultMatrixd(manipulatedFrame()->matrix());
 		// Draw ray
 		drawer.drawRay(tray, 2, 0.005);
-		// Change back to world coordinate system
-		//		glPopMatrix();
 
+		// Draw point at the origin
 		drawer.drawPoint(point1);
+
+		// Draw a box
+		drawer.drawAxisAlignedBox(box);
 
 	}
 
 private:
 	GeometryDrawer drawer;
 	Ray ray;
+	AxisAlignedBox box;
 	Vector3 point1;
 };
 

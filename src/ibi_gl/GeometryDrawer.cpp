@@ -11,7 +11,7 @@
 
 GeometryDrawer::GeometryDrawer()
 {
-
+	quadric = gluNewQuadric();
 }
 
 GeometryDrawer::~GeometryDrawer()
@@ -19,10 +19,35 @@ GeometryDrawer::~GeometryDrawer()
 
 }
 
+void GeometryDrawer::drawCylinder(float length, float radius,
+		int nbSubdivisions)
+{
+	if (radius < 0.0)
+		radius = 0.05 * length;
+	gluCylinder(quadric, radius, radius, length, nbSubdivisions, 1);
+}
+
+void GeometryDrawer::drawCylinder(Vector3& from, Vector3& to, float radius,
+		int nbSubdivisions)
+{
+	Vector3 dir = to - from;
+
+	// Calculate desired rotation
+	Quaternion q = Vector3::UNIT_Z.getRotationTo(dir);
+
+	glPushMatrix();
+
+	// Change transformation
+	GL::Translate(from);
+	GL::Rotate(q);
+
+	drawCylinder(dir.length(), radius, nbSubdivisions);
+
+	glPopMatrix();
+}
+
 void GeometryDrawer::drawArrow(float length, float radius, int nbSubdivisions)
 {
-	static GLUquadric* quadric = gluNewQuadric();
-
 	if (radius < 0.0)
 		radius = 0.05 * length;
 
@@ -40,10 +65,10 @@ void GeometryDrawer::drawArrow(float length, float radius, int nbSubdivisions)
 void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 		int nbSubdivisions)
 {
-	glPushMatrix();
-
 	// Calculate desired rotation
 	Quaternion q = Vector3::UNIT_Z.getRotationTo(ray.getDirection());
+
+	glPushMatrix();
 
 	// Change transformation
 	GL::Translate(ray.getOrigin());
@@ -58,8 +83,6 @@ void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 
 void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)
 {
-	static GLUquadric* quadric = gluNewQuadric();
-
 	assert(radius > 0.0);
 
 	glPushMatrix();
@@ -68,4 +91,55 @@ void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)
 	gluSphere(quadric, radius, nbSubdivisions, nbSubdivisions);
 
 	glPopMatrix();
+}
+
+void GeometryDrawer::drawAxisAlignedBox(AxisAlignedBox& box, float radius,
+		int nbSubdivisions)
+{
+	/*
+	 1-----2
+	 /|    /|
+	 / |   / |
+	 5-----4  |
+	 |  0--|--3
+	 | /   | /
+	 |/    |/
+	 6-----7
+	 */
+	// Get box corners
+	Vector3 corner[8];
+	corner[0] = box.getCorner(AxisAlignedBox::FAR_LEFT_BOTTOM);
+	corner[1] = box.getCorner(AxisAlignedBox::FAR_LEFT_TOP);
+	corner[2] = box.getCorner(AxisAlignedBox::FAR_RIGHT_TOP);
+	corner[3] = box.getCorner(AxisAlignedBox::FAR_RIGHT_BOTTOM);
+	corner[4] = box.getCorner(AxisAlignedBox::NEAR_RIGHT_TOP);
+	corner[5] = box.getCorner(AxisAlignedBox::NEAR_LEFT_TOP);
+	corner[6] = box.getCorner(AxisAlignedBox::NEAR_LEFT_BOTTOM);
+	corner[7] = box.getCorner(AxisAlignedBox::NEAR_RIGHT_BOTTOM);
+
+	// Draw corners
+	for (int i = 0; i < 8; ++i)
+	{
+		drawPoint(corner[i], radius, nbSubdivisions);
+	}
+
+	drawCylinder(corner[0], corner[1], radius / 2);
+	drawCylinder(corner[0], corner[3], radius / 2);
+	drawCylinder(corner[0], corner[6], radius / 2);
+
+	drawCylinder(corner[1], corner[2], radius / 2);
+	drawCylinder(corner[1], corner[5], radius / 2);
+
+	drawCylinder(corner[2], corner[3], radius / 2);
+	drawCylinder(corner[2], corner[4], radius / 2);
+
+	drawCylinder(corner[3], corner[7], radius / 2);
+
+	drawCylinder(corner[4], corner[5], radius / 2);
+	drawCylinder(corner[4], corner[7], radius / 2);
+
+	drawCylinder(corner[5], corner[6], radius / 2);
+
+	drawCylinder(corner[6], corner[7], radius / 2);
+
 }
