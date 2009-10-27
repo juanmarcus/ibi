@@ -12,6 +12,7 @@
 #include <cassert>
 #include "ibi_math/Math.h"
 #include "Quaternion.h"
+#include <iostream>
 
 class Vector3
 {
@@ -679,6 +680,12 @@ public:
 
 		return Math::Abs(angle.valueRadians()) <= tolerance.valueRadians();
 
+	}
+
+	inline friend std::ostream& operator <<(std::ostream& o, const Vector3& v)
+	{
+		o << "Vector3(" << v.x << ", " << v.y << ", " << v.z << ")";
+		return o;
 	}
 
 	// special points

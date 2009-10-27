@@ -11,7 +11,9 @@
 
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/Vector3.h"
+#include "ibi_geometry/Matrix4.h"
 #include "ibi_gl/GeometryDrawer.h"
+#include "ibi_geometry/Transform.h"
 
 using namespace std;
 
@@ -38,18 +40,26 @@ public:
 		setSceneRadius(2.0);
 		//	restoreStateFromFile();
 
-		ray.setDirection(Vector3(1.0,1.0,1.0));
 	}
 
 	void draw()
 	{
+		const GLdouble* mod = manipulatedFrame()->matrix();
+		Matrix4 m(mod[0], mod[4], mod[8], mod[12], mod[1], mod[5], mod[9],
+				mod[13], mod[2], mod[6], mod[10], mod[14], mod[3], mod[7],
+				mod[11], mod[15]);
+
+		Vector3 p = m.getTrans();
+		drawer.drawPoint(p);
+
+		Ray tray = Transform::TransformRay(m, ray);
 		// Change to frame coordinate system
-//		glPushMatrix();
-//		glMultMatrixd(manipulatedFrame()->matrix());
+		//		glPushMatrix();
+		//		glMultMatrixd(manipulatedFrame()->matrix());
 		// Draw ray
-		drawer.drawRay(ray, 2, 0.005);
+		drawer.drawRay(tray, 2, 0.005);
 		// Change back to world coordinate system
-//		glPopMatrix();
+		//		glPopMatrix();
 
 		drawer.drawPoint(point1);
 

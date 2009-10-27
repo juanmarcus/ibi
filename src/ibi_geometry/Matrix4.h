@@ -30,6 +30,26 @@ public:
 	{
 	}
 
+	inline Matrix4(const Real* matrix)
+	{
+		m[0][0] = matrix[0];
+		m[0][1] = matrix[1];
+		m[0][2] = matrix[2];
+		m[0][3] = matrix[3];
+		m[1][0] = matrix[4];
+		m[1][1] = matrix[5];
+		m[1][2] = matrix[6];
+		m[1][3] = matrix[7];
+		m[2][0] = matrix[8];
+		m[2][1] = matrix[9];
+		m[2][2] = matrix[10];
+		m[2][3] = matrix[11];
+		m[3][0] = matrix[12];
+		m[3][1] = matrix[13];
+		m[3][2] = matrix[14];
+		m[3][3] = matrix[15];
+	}
+
 	inline Matrix4(Real m00, Real m01, Real m02, Real m03, Real m10, Real m11,
 			Real m12, Real m13, Real m20, Real m21, Real m22, Real m23,
 			Real m30, Real m31, Real m32, Real m33)
