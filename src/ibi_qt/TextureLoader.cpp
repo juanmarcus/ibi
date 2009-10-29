@@ -79,24 +79,36 @@ void TextureLoader::loadRaw(Texture& t)
 	// Initialize texture
 	t.init();
 
-	// Open file
-	ifstream infile;
-	infile.open(t.filename.c_str(), ios::binary);
-	if (!infile)
+	char* tmpdata;
+	// Check for data
+	if (!t.data)
 	{
-		cout << "here" << endl;
-		throw Exception("Error opening file.");
-		cout << "here" << endl;
+		// Open file
+		ifstream infile;
+		infile.open(t.filename.c_str(), ios::binary);
+		if (!infile)
+		{
+			cout << "here" << endl;
+			throw Exception("Error opening file.");
+			cout << "here" << endl;
+		}
+
+		// Load the data to memory
+		tmpdata = new char[t.width * t.height * 3];
+		infile.read(tmpdata, 256 * 256 * 3);
+	}
+	else
+	{
+		tmpdata = (char*)t.data;
 	}
 
-	// Load the data to memory
-	char* tmpdata = new char[t.width * t.height * 3];
-	infile.read(tmpdata, 256 * 256 * 3);
-
 	// Load the data to opengl
-	glTexImage2D(t.target, 0, 3, t.width, t.height, 0, GL_RGB,
-			t.dataformat, tmpdata);
+	glTexImage2D(t.target, 0, 3, t.width, t.height, 0, GL_RGB, t.dataformat,
+			tmpdata);
 
 	// Delete raw data
-	delete[] tmpdata;
+	if (!t.data)
+	{
+		delete[] tmpdata;
+	}
 }
