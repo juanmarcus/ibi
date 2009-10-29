@@ -24,7 +24,7 @@ struct paint
 	{
 		mode.enable();
 
-		t.apply();
+		t.enable();
 //		glDisable(GL_TEXTURE_2D);
 
 		glColor3d(1.0, 1.0, 1.0);

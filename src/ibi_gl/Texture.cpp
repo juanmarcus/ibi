@@ -20,7 +20,7 @@ Texture::Texture(FileFormat a_fileFormat, int a_width, int a_height) :
 
 Texture::~Texture()
 {
-
+	glDeleteTextures(1, &glname);
 }
 
 void Texture::setFilename(string filename)
@@ -49,7 +49,7 @@ void Texture::setDataFormat(GLenum dataformat)
 	this->dataformat = dataformat;
 }
 
-void Texture::apply()
+void Texture::enable()
 {
 	if (glname)
 	{
@@ -62,12 +62,17 @@ void Texture::apply()
 	}
 }
 
+void Texture::disable()
+{
+	glDisable(target);
+}
+
 void Texture::init()
 {
 	// Generate a name
 	glGenTextures(1, &this->glname);
 	// Make current
-	apply();
+	enable();
 	// Set texture properties
 	glTexParameterf(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

@@ -29,8 +29,9 @@ public:
 	void setFormat(FileFormat format);
 	void setDataFormat(GLenum dataformat);
 
-	void apply();
 	void init();
+	void enable();
+	void disable();
 private:
 	// Texture filename
 	std::string filename;

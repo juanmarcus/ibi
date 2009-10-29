@@ -21,7 +21,7 @@ struct paint
 {
 	void operator()(ibiQtSmartGLWidget* widget)
 	{
-		t.apply();
+		t.enable();
 
 		glColor3d(1.0, 1.0, 1.0);
 
