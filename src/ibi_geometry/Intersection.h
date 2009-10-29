@@ -17,7 +17,7 @@ class Intersection
 {
 public:
 	/** Ray / box intersection, returns boolean result and distance. */
-	static std::pair<bool, Real> intersects(const Ray& ray,
+	static std::pair<bool, RealPair > intersects(const Ray& ray,
 			const AxisAlignedBox& box);
 	static std::pair<bool, Real> intersects(const Ray& ray,
 			const Triangle& triangle);

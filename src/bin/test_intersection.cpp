@@ -67,13 +67,16 @@ public:
 		// Draw a box
 		drawer.drawAxisAlignedBox(box);
 
-		std::pair<bool, Real> result = Intersection::intersects(tray, box);
+		std::pair<bool, RealPair> result = Intersection::intersects(tray, box);
 		if (result.first)
 		{
-			Real dist = result.second;
-			Vector3 intpoint = tray * dist;
+			Real d1 = result.second.first;
+			Real d2 = result.second.second;
+			Vector3 intpoint1 = tray * d1;
+			Vector3 intpoint2 = tray * d2;
 			glColor3f(1.0, 0.0, 0.0);
-			drawer.drawPoint(intpoint);
+			drawer.drawPoint(intpoint1);
+			drawer.drawPoint(intpoint2);
 		}
 
 	}
