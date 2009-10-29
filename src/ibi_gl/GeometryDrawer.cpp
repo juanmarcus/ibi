@@ -81,7 +81,8 @@ void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 
 }
 
-void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)
+void GeometryDrawer::drawPoint(const Vector3& point, float radius,
+		int nbSubdivisions)
 {
 	assert(radius > 0.0);
 
@@ -91,6 +92,16 @@ void GeometryDrawer::drawPoint(Vector3& point, float radius, int nbSubdivisions)
 	gluSphere(quadric, radius, nbSubdivisions, nbSubdivisions);
 
 	glPopMatrix();
+}
+
+void GeometryDrawer::drawPoints(std::vector<Vector3>& points, float radius, int nbSubdivisions)
+{
+	std::vector<Vector3>::iterator it = points.begin();
+	std::vector<Vector3>::iterator itEnd = points.end();
+	for (; it != itEnd; ++it)
+	{
+		drawPoint(*it, radius, nbSubdivisions);
+	}
 }
 
 void GeometryDrawer::drawAxisAlignedBox(AxisAlignedBox& box, float radius,
