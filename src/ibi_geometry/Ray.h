@@ -46,6 +46,19 @@ public:
 	{
 		return mDirection;
 	}
+
+	/** Gets the position of a point t units along the ray. */
+	Vector3 getPoint(Real t) const
+	{
+		return Vector3(mOrigin + (mDirection * t));
+	}
+
+	/** Gets the position of a point t units along the ray. */
+	Vector3 operator*(Real t) const
+	{
+		return getPoint(t);
+	}
+	;
 };
 
 #endif /* RAY_H_ */
