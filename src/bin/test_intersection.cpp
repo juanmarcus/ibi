@@ -16,6 +16,7 @@
 #include "ibi_gl/GeometryDrawer.h"
 #include "ibi_geometry/Transform.h"
 #include "ibi_geometry/Intersection.h"
+#include "ibi_geometry/Triangle.h"
 
 using namespace std;
 
@@ -44,6 +45,8 @@ public:
 		//	restoreStateFromFile();
 
 		box.setExtents(-1, -1, -1, 1, 1, 1);
+
+		t .setVertices(Vector3(1, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0));
 	}
 
 	void draw()
@@ -67,6 +70,9 @@ public:
 		// Draw a box
 		drawer.drawAxisAlignedBox(box);
 
+		// Draw a triangle
+		drawer.drawTriangle(t);
+
 		std::pair<bool, RealPair> result = Intersection::intersects(tray, box);
 		if (result.first)
 		{
@@ -79,12 +85,22 @@ public:
 			drawer.drawPoint(intpoint2);
 		}
 
+		std::pair<bool, Real> tres = Intersection::intersects(tray, t);
+		if (tres.first)
+		{
+			Real d = tres.second;
+			Vector3 intpoint= tray * d;
+			glColor3f(0.0, 1.0, 0.0);
+			drawer.drawPoint(intpoint);
+		}
+
 	}
 
 private:
 	GeometryDrawer drawer;
 	Ray ray;
 	AxisAlignedBox box;
+	Triangle t;
 };
 
 int main(int argc, char **argv)

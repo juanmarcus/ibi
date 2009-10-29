@@ -18,7 +18,7 @@ public:
 
 	}
 
-	Triangle(Vector3& v0, Vector3& v1, Vector3 v2)
+	Triangle(const Vector3& v0, const Vector3& v1, const Vector3& v2)
 	{
 		vertices[0] = v0;
 		vertices[1] = v1;
@@ -30,7 +30,14 @@ public:
 
 	}
 
-	Vector3 getVertex(int v)
+	void setVertices(const Vector3& v0, const Vector3& v1, const Vector3& v2)
+	{
+		vertices[0] = v0;
+		vertices[1] = v1;
+		vertices[2] = v2;
+	}
+
+	Vector3 getVertex(int v) const
 	{
 		assert(v < 3);
 		return vertices[v];

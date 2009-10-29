@@ -13,6 +13,7 @@
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/AxisAlignedBox.h"
 #include "ibi_geometry/Vector3.h"
+#include "ibi_geometry/Triangle.h"
 
 class GeometryDrawer
 {
@@ -38,7 +39,10 @@ public:
 	void drawPoints(std::vector<Vector3>& points, float radius = 0.01,
 			int nbSubdivisions = 12);
 
-	void drawAxisAlignedBox(AxisAlignedBox& box, float radius = 0.01,
+	void drawAxisAlignedBox(const AxisAlignedBox& box, float radius = 0.01,
+			int nbSubdivisions = 12);
+
+	void drawTriangle(const Triangle& t, float radius = 0.01,
 			int nbSubdivisions = 12);
 private:
 	GLUquadric* quadric;

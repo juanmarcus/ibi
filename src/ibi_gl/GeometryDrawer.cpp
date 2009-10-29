@@ -94,7 +94,8 @@ void GeometryDrawer::drawPoint(const Vector3& point, float radius,
 	glPopMatrix();
 }
 
-void GeometryDrawer::drawPoints(std::vector<Vector3>& points, float radius, int nbSubdivisions)
+void GeometryDrawer::drawPoints(std::vector<Vector3>& points, float radius,
+		int nbSubdivisions)
 {
 	std::vector<Vector3>::iterator it = points.begin();
 	std::vector<Vector3>::iterator itEnd = points.end();
@@ -104,7 +105,7 @@ void GeometryDrawer::drawPoints(std::vector<Vector3>& points, float radius, int 
 	}
 }
 
-void GeometryDrawer::drawAxisAlignedBox(AxisAlignedBox& box, float radius,
+void GeometryDrawer::drawAxisAlignedBox(const AxisAlignedBox& box, float radius,
 		int nbSubdivisions)
 {
 	/*
@@ -153,4 +154,19 @@ void GeometryDrawer::drawAxisAlignedBox(AxisAlignedBox& box, float radius,
 
 	drawCylinder(corner[6], corner[7], radius / 2);
 
+}
+
+void GeometryDrawer::drawTriangle(const Triangle& t, float radius, int nbSubdivisions)
+{
+	Vector3 v0 = t.getVertex(0);
+	Vector3 v1 = t.getVertex(1);
+	Vector3 v2 = t.getVertex(2);
+
+	glPushMatrix();
+
+	drawPoint(v0, radius, nbSubdivisions);
+	drawPoint(v1, radius, nbSubdivisions);
+	drawPoint(v2, radius, nbSubdivisions);
+
+	glPopMatrix();
 }
