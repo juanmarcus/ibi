@@ -55,7 +55,7 @@ public:
 		// Transform ray
 		Ray tray = Transform::TransformRay(m, ray);
 		// Draw ray
-		drawer.drawRay(tray, 2, 0.005);
+		drawer.drawRay(tray, 4, 0.005);
 
 		// Draw point at the origin
 		drawer.drawPoint(Vector3::ZERO);

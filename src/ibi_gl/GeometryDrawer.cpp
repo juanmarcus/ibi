@@ -75,7 +75,7 @@ void GeometryDrawer::drawRay(Ray& ray, float length, float radius,
 	GL::Rotate(q);
 
 	// Draw the arrow
-	drawArrow(ray.getDirection().length(), radius, nbSubdivisions);
+	drawArrow(length, radius, nbSubdivisions);
 
 	glPopMatrix();
 
