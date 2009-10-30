@@ -25,7 +25,7 @@ struct paint
 		mode.enable();
 
 		t.enable();
-//		glDisable(GL_TEXTURE_2D);
+		//		glDisable(GL_TEXTURE_2D);
 
 		glColor3d(1.0, 1.0, 1.0);
 
@@ -63,7 +63,9 @@ struct init
 			free(err);
 		}
 
+		int size = nrrdElementSize(nin);
 		t.setData(nin->data);
+		t.setElemSize(size);
 		t.setDims(nin->axis[0].size, nin->axis[1].size);
 		widget->loadTexture(t);
 	}

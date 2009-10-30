@@ -25,6 +25,7 @@ public:
 
 	void setFilename(std::string filename);
 	void setData(void* data);
+	void setElemSize(int size);
 	void setDims(int w, int h);
 	void setFormat(FileFormat format);
 	void setDataFormat(GLenum dataformat);
@@ -38,6 +39,9 @@ private:
 
 	// Data
 	void* data;
+
+	// Total data size
+	int elemsize;
 
 	// Image format
 	FileFormat fileFormat;

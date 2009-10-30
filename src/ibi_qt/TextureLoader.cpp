@@ -61,12 +61,30 @@ void TextureLoader::loadNrrd(Texture& t)
 	{
 		throw Exception("Nrrd format requires width and height parameters.");
 	}
+
+	if (!t.elemsize)
+	{
+		throw Exception("Nrrd format requires element size parameter.");
+	}
 	// Initialize texture
 	t.init();
 
+	// Copy memory upside-down
+	char* tmpdata = (char*) malloc(t.width * t.height * t.elemsize);
+
+	for (int i = 0; i < t.height; ++i)
+	{
+		char* src = (char*) t.data;
+		int linesize = t.width * t.elemsize;
+		memcpy(&tmpdata[(t.height - i - 1) * linesize], &src[i * linesize],
+				linesize);
+	}
+
 	// Load the data to opengl
 	glTexImage2D(t.target, 0, 1, t.width, t.height, 0, GL_LUMINANCE,
-			t.dataformat, t.data);
+			t.dataformat, tmpdata);
+
+	free(tmpdata);
 
 }
 
@@ -99,7 +117,7 @@ void TextureLoader::loadRaw(Texture& t)
 	}
 	else
 	{
-		tmpdata = (char*)t.data;
+		tmpdata = (char*) t.data;
 	}
 
 	// Load the data to opengl
