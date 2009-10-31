@@ -71,7 +71,7 @@ Real Math::InvSqrt(Real fValue)
 //-----------------------------------------------------------------------
 Real Math::UnitRandom()
 {
-	return rand() / RAND_MAX;
+	return rand() / Real(RAND_MAX);
 }
 
 //-----------------------------------------------------------------------
