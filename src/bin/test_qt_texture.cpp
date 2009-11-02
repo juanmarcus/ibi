@@ -12,12 +12,13 @@
 #include "ibi_gl/Texture.h"
 
 using namespace std;
+using namespace ibi;
 
 Texture t(FF_QT);
 
 struct paint
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		t.enable();
 
@@ -40,7 +41,7 @@ struct paint
 
 struct init
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		t.setFilename("data/image.png");
 		widget->loadTexture(t);

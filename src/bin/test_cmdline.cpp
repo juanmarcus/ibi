@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+using namespace ibi;
 
 int main(int argc, char **argv)
 {

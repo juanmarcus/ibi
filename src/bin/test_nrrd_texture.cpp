@@ -8,11 +8,12 @@
 #include <QtGui/QApplication>
 #include <iostream>
 #include <teem/nrrd.h>
-#include "ibi_qt/ibiQtFunctorGLWidget.h"
+#include "ibi_qt/ibiQFunctorGLViewer.h"
 #include "ibi_gl/Texture.h"
-#include "ibi_gl2d/GLMode2D.h"
+#include "ibi_gl/GLMode2D.h"
 
 using namespace std;
+using namespace ibi;
 
 Texture t(FF_NRRD);
 
@@ -20,7 +21,7 @@ struct paint
 {
 	GLMode2D mode;
 
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		mode.enable();
 
@@ -53,7 +54,7 @@ struct init
 {
 	Nrrd* nin;
 
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		nin = nrrdNew();
 		if (nrrdLoad(nin, "data/nrrd2d.nhdr", NULL))

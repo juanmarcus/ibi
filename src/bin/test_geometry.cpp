@@ -17,6 +17,7 @@
 #include "ibi_geometry/Transform.h"
 
 using namespace std;
+using namespace ibi;
 
 class Viewer: public QGLViewer
 {

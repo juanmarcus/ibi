@@ -8,16 +8,17 @@
 #include <QtGui/QApplication>
 #include <iostream>
 
-#include "ibi_qt/ibiQtFunctorGLWidget.h"
+#include "ibi_qt/ibiQFunctorGLViewer.h"
 #include "ibi_gl/Texture.h"
 
 using namespace std;
+using namespace ibi;
 
 Texture t(FF_RAW);
 
 struct paint
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		t.enable();
 
@@ -40,7 +41,7 @@ struct paint
 
 struct init
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		t.setFilename("data/texture.raw");
 		t.setDims(256, 256);

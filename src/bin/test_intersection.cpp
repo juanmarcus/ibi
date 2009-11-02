@@ -19,6 +19,7 @@
 #include "ibi_geometry/Triangle.h"
 
 using namespace std;
+using namespace ibi;
 
 class Viewer: public QGLViewer
 {

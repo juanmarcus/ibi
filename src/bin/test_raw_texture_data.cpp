@@ -14,12 +14,13 @@
 #include "ibi_error/Exception.h"
 
 using namespace std;
+using namespace ibi;
 
 Texture t(FF_RAW);
 
 struct paint
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		t.enable();
 
@@ -42,7 +43,7 @@ struct paint
 
 struct init
 {
-	void operator()(ibiQtSmartGLWidget* widget)
+	void operator()(ibiQGLViewer* widget)
 	{
 		char* data;
 		ifstream infile;
