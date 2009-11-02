@@ -10,56 +10,76 @@
 
 #include "ibi.h"
 #include <GL/gl.h>
+#include <boost/any.hpp>
+#include <map>
 
 namespace ibi
 {
 
-enum FileFormat
+/*
+ * Loading time information for textures.
+ */
+struct TextureLoadingInfo
 {
-	FF_QT, FF_RAW, FF_NRRD
+	/*
+	 * Texture type.
+	 *
+	 * Used to select the loading plugin.
+	 */
+	std::string texture_type;
+
+	/*
+	 * Target GL enum.
+	 *
+	 * For instance GL_TEXTURE_2D.
+	 */
+	GLenum target;
+
+	/*
+	 * Custom loading options.
+	 *
+	 * Each plugin checks for the options it needs.
+	 */
+	std::map<String, boost::any> options;
+
 };
 
 class Texture
 {
 	friend class TextureLoader;
 public:
-	Texture(FileFormat fileFormat = FF_QT, int width = 0, int height = 0);
+	Texture();
 	~Texture();
 
-	void setFilename(String filename);
-	void setData(void* data);
-	void setElemSize(int size);
-	void setDims(int w, int h);
-	void setFormat(FileFormat format);
-	void setDataFormat(GLenum dataformat);
+	void setTarget(GLenum target);
+	void setDimensions(int w, int h);
+
+	GLuint getGLName();
 
 	void init();
 	void enable();
 	void disable();
 private:
-	// Texture filename
-	String filename;
-
-	// Data
-	void* data;
-
-	// Total data size
-	int elemsize;
-
-	// Image format
-	FileFormat fileFormat;
-
-	// Data format
-	GLenum dataformat;
-
-	// Generated OpenGL name
+	/*
+	 * Generated OpenGL name.
+	 */
 	GLuint glname;
 
-	// Target enum
+	/*
+	 * Target texture enum.
+	 *
+	 * Defaults to GL_TEXTURE_2D.
+	 */
 	GLenum target;
 
-	// Dimensions
+	/*
+	 * Texture width in pixels.
+	 */
 	int width;
+
+	/*
+	 * Texture height in pixels.
+	 */
 	int height;
 };
 

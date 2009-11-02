@@ -13,13 +13,10 @@ namespace ibi
 
 using namespace std;
 
-Texture::Texture(FileFormat a_fileFormat, int a_width, int a_height) :
-	fileFormat(a_fileFormat), glname(0), width(a_width), height(a_height)
+Texture::Texture() :
+	glname(0), width(0), height(0)
 {
 	target = GL_TEXTURE_2D;
-	data = NULL;
-	dataformat = GL_UNSIGNED_BYTE;
-	elemsize = 0;
 }
 
 Texture::~Texture()
@@ -27,35 +24,20 @@ Texture::~Texture()
 	glDeleteTextures(1, &glname);
 }
 
-void Texture::setFilename(string filename)
+void Texture::setTarget(GLenum target)
 {
-	this->filename = filename;
+	this->target = target;
 }
 
-void Texture::setData(void* data)
-{
-	this->data = data;
-}
-
-void Texture::setElemSize(int size)
-{
-	this->elemsize = size;
-}
-
-void Texture::setDims(int w, int h)
+void Texture::setDimensions(int w, int h)
 {
 	this->width = w;
 	this->height = h;
 }
 
-void Texture::setFormat(FileFormat format)
+GLuint Texture::getGLName()
 {
-	this->fileFormat = format;
-}
-
-void Texture::setDataFormat(GLenum dataformat)
-{
-	this->dataformat = dataformat;
+	return this->glname;
 }
 
 void Texture::enable()
