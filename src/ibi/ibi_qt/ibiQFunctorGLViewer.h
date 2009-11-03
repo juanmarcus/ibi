@@ -8,7 +8,7 @@
 namespace ibi
 {
 
-typedef boost::function<void(ibiQGLViewer* widget)> PaintFunctor;
+typedef boost::function<void(ibiQGLViewer* widget)> DrawFunctor;
 typedef boost::function<void(ibiQGLViewer* widget)> InitializeFunctor;
 typedef boost::function<void(ibiQGLViewer* widget, int w, int h)> ResizeFunctor;
 
@@ -32,17 +32,14 @@ class ibiQFunctorGLViewer: public ibiQGLViewer
 Q_OBJECT
 
 public:
-	ibiQFunctorGLViewer(InitializeFunctor& init, ResizeFunctor& resize,
-			PaintFunctor& a_painter);
+	ibiQFunctorGLViewer(InitializeFunctor& init, DrawFunctor& a_painter);
 	~ibiQFunctorGLViewer();
 
-	void paintGL();
-	void initializeGL();
-	void resizeGL(int w, int h);
+	void draw();
+	void init();
 private:
 	InitializeFunctor& initer;
-	ResizeFunctor& resizer;
-	PaintFunctor& painter;
+	DrawFunctor& drawer;
 };
 
 } // namespace ibi

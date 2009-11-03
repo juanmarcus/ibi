@@ -17,26 +17,33 @@ using namespace ibi;
 
 Texture* t = 0;
 
-struct paint
+struct draw
 {
 	void operator()(ibiQGLViewer* widget)
 	{
 		t->enable();
+
+		widget->start2DMode();
 
 		glColor3d(1.0, 1.0, 1.0);
 
 		glBegin(GL_QUADS);
 
 		glTexCoord2d(0.0, 0.0);
-		glVertex2d(-1.0, -1.0);
+		glVertex2d(0.0, 0.0);
+
 		glTexCoord2d(1.0, 0.0);
-		glVertex2d(+1.0, -1.0);
+		glVertex2d(1.0, 0.0);
+
 		glTexCoord2d(1.0, 1.0);
-		glVertex2d(+1.0, +1.0);
+		glVertex2d(1.0, 1.0);
+
 		glTexCoord2d(0.0, 1.0);
-		glVertex2d(-1.0, +1.0);
+		glVertex2d(0.0, 1.0);
 
 		glEnd();
+
+		widget->stop2DMode();
 	}
 };
 
@@ -53,25 +60,19 @@ struct init
 		manager.loadPlugin("build/lib/libtexture_loader_qt.so");
 
 		t = manager.load(tinfo);
-	}
-};
 
-struct resize
-{
-	void operator()(ibiQGLViewer* widget, int w, int h)
-	{
+		widget->setDesiredAspectRatio(1.0);
 	}
 };
 
 InitializeFunctor initer = init();
-ResizeFunctor resizer = resize();
-PaintFunctor painter = paint();
+DrawFunctor drawer = draw();
 
 int main(int argc, char **argv)
 {
 	QApplication app(argc, argv);
 
-	ibiQFunctorGLViewer w(initer, resizer, painter);
+	ibiQFunctorGLViewer w(initer, drawer);
 
 	w.showMaximized();
 

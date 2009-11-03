@@ -19,8 +19,17 @@ public:
 	GLMode2D();
 	~GLMode2D();
 
+	void setScreenDimensions(int w, int h);
+
 	void enable();
 	void disable();
+
+private:
+	bool active;
+
+	int width;
+	int height;
+
 };
 
 } // namespace ibi
