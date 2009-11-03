@@ -13,7 +13,7 @@ class ibiQGLViewer: public QGLViewer
 Q_OBJECT
 
 public:
-	ibiQGLViewer();
+	ibiQGLViewer(QWidget* parent = 0);
 	~ibiQGLViewer();
 
 	//==============================================

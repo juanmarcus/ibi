@@ -3,8 +3,8 @@
 namespace ibi
 {
 
-ibiQGLViewer::ibiQGLViewer() :
-	QGLViewer(), desiredAspectRatio(0.0)
+ibiQGLViewer::ibiQGLViewer(QWidget* parent) :
+	QGLViewer(parent), desiredAspectRatio(0.0)
 {
 }
 
