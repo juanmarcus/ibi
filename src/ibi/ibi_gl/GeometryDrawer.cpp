@@ -6,8 +6,8 @@
  */
 
 #include "GeometryDrawer.h"
+
 #include "GL.h"
-#include <GL/glu.h>
 
 namespace ibi
 {

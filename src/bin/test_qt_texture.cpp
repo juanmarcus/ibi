@@ -5,9 +5,9 @@
  *      Author: Juan Ibiapina
  */
 
+#include "ibi_gl/ibi_gl.h"
 #include <QtGui/QApplication>
 #include <iostream>
-
 #include "ibi_qt/ibiQFunctorGLViewer.h"
 #include "ibi_texturemanager/TextureManager.h"
 #include "ibi_gl/Texture.h"

@@ -5,6 +5,7 @@
  *      Author: Juan Ibiapina
  */
 
+#include "ibi_gl/ibi_gl.h"
 #include <QtGui/QApplication>
 #include <iostream>
 #include <teem/nrrd.h>

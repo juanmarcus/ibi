@@ -5,10 +5,10 @@
  *      Author: Juan Ibiapina
  */
 
+#include "ibi_gl/ibi_gl.h"
 #include <QtGui/QApplication>
 #include <QGLViewer/qglviewer.h>
 #include <iostream>
-
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Matrix4.h"

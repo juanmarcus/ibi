@@ -9,6 +9,7 @@
 #define GLMODE2D_H_
 
 #include "ibi.h"
+#include "ibi_gl.h"
 
 namespace ibi
 {

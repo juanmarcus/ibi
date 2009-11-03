@@ -9,7 +9,7 @@
 #define TEXTURE_H_
 
 #include "ibi.h"
-#include <GL/gl.h>
+#include "ibi_gl.h"
 #include <boost/any.hpp>
 #include <map>
 

@@ -9,8 +9,8 @@
 #define GEOMETRYDRAWER_H_
 
 #include "ibi.h"
+#include "ibi_gl.h"
 #include <vector>
-#include <GL/glu.h>
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/AxisAlignedBox.h"
 #include "ibi_geometry/Vector3.h"

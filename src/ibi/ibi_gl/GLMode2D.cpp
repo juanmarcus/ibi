@@ -7,8 +7,6 @@
 
 #include "GLMode2D.h"
 
-#include <GL/gl.h>
-
 namespace ibi
 {
 

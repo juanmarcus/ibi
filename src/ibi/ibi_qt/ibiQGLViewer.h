@@ -2,6 +2,7 @@
 #define IBIQTSMARTGLWIDGET_H
 
 #include "ibi.h"
+#include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/GLMode2D.h"
 #include <QGLViewer/qglviewer.h>
 
