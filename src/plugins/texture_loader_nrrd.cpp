@@ -22,9 +22,9 @@ class TextureLoader_nrrd: public TextureLoader
 		texture->init();
 
 		Nrrd* nin = boost::any_cast<Nrrd*>(info.options["nrrd"]);
-//		Nrrd* nout = nrrdNew();
-//		nrrdConvert(nout,nin,nrrdTypeUChar);
-//		nrrdQuantize(nout, nin, 0, 8);
+		//		Nrrd* nout = nrrdNew();
+		//		nrrdConvert(nout,nin,nrrdTypeUChar);
+		//		nrrdQuantize(nout, nin, 0, 8);
 
 		int width = nin->axis[0].size;
 		int height = nin->axis[1].size;
@@ -33,9 +33,9 @@ class TextureLoader_nrrd: public TextureLoader
 		// Copy memory upside-down
 		char* tmpdata = (char*) malloc(width * height * elemsize);
 
+		char* src = (char*) nin->data;
 		for (int i = 0; i < height; ++i)
 		{
-			char* src = (char*) nin->data;
 			int linesize = width * elemsize;
 			memcpy(&tmpdata[(height - i - 1) * linesize], &src[i * linesize],
 					linesize);
@@ -49,7 +49,7 @@ class TextureLoader_nrrd: public TextureLoader
 		texture->setDimensions(width, height);
 
 		free(tmpdata);
-//		nrrdNuke(nout);
+		//		nrrdNuke(nout);
 
 		return texture;
 
