@@ -36,19 +36,21 @@ void ibiQGLViewer::resizeGL(int width, int height)
 		{
 			float actual_width = height * desiredAspectRatio;
 			glViewport((width - actual_width) / 2.0, 0.0, actual_width, height);
+			camera()->setScreenWidthAndHeight(actual_width, height);
 		}
 		else
 		{
 			float actual_height = width / desiredAspectRatio;
 			glViewport(0.0, (height - actual_height) / 2.0, width,
 					actual_height);
+			camera()->setScreenWidthAndHeight(width, actual_height);
 		}
 	}
 	else
 	{
 		glViewport(0, 0, GLint(width), GLint(height));
+		camera()->setScreenWidthAndHeight(width, height);
 	}
-	camera()->setScreenWidthAndHeight(this->width(), this->height());
 }
 
 void ibiQGLViewer::setDesiredAspectRatio(float ratio)
