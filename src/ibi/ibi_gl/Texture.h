@@ -52,7 +52,7 @@ public:
 	~Texture();
 
 	void setTarget(GLenum target);
-	void setDimensions(int w, int h);
+	void setDimensions(int w, int h, int d = 0);
 
 	GLuint getGLName();
 
@@ -81,6 +81,13 @@ private:
 	 * Texture height in pixels.
 	 */
 	int height;
+
+	/*
+	 * Texture depth in pixels.
+	 *
+	 * Used only for 3D textures.
+	 */
+	int depth;
 };
 
 } // namespace ibi

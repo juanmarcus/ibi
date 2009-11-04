@@ -14,7 +14,7 @@ namespace ibi
 using namespace std;
 
 Texture::Texture() :
-	glname(0), width(0), height(0)
+	glname(0), width(0), height(0), depth(0)
 {
 	target = GL_TEXTURE_2D;
 }
@@ -29,10 +29,11 @@ void Texture::setTarget(GLenum target)
 	this->target = target;
 }
 
-void Texture::setDimensions(int w, int h)
+void Texture::setDimensions(int w, int h, int d)
 {
 	this->width = w;
 	this->height = h;
+	this->depth = d;
 }
 
 GLuint Texture::getGLName()
@@ -65,8 +66,8 @@ void Texture::init()
 	// Make current
 	enable();
 	// Set texture properties
-	glTexParameterf(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameterf(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 }
 
 } // namespace ibi
