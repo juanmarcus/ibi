@@ -10,6 +10,7 @@
 #include "ibi_gl/Texture.h"
 #include <boost/any.hpp>
 #include <teem/nrrd.h>
+#include "nrrdGLutils.h"
 
 using namespace ibi;
 
@@ -44,7 +45,7 @@ class TextureLoader_nrrd: public TextureLoader
 		GLuint name = texture->getGLName();
 
 		glTexImage2D(info.target, 0, 1, width, height, 0, GL_LUMINANCE,
-				GL_UNSIGNED_BYTE, tmpdata);
+				convert_type_to_enum(nin->type), tmpdata);
 
 		texture->setDimensions(width, height);
 

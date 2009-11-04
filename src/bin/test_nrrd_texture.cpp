@@ -56,7 +56,7 @@ struct init
 	void operator()(ibiQGLViewer* widget)
 	{
 		nin = nrrdNew();
-		if (nrrdLoad(nin, "data/nrrd2d.nhdr", NULL))
+		if (nrrdLoad(nin, "data/nrrd2d_8.nhdr", NULL))
 		{
 			char* err = biffGetDone(NRRD);
 			cerr << err << endl;
