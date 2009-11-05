@@ -14,7 +14,6 @@ ibiQGLViewer::~ibiQGLViewer()
 
 void ibiQGLViewer::start2DMode()
 {
-	mode2d.setScreenDimensions(width(), height());
 	mode2d.enable();
 }
 
