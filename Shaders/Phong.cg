@@ -1,0 +1,68 @@
+/************ Phong Ilumination Model ***************/
+
+float diffuseAttenuation(float3 surfaceNormal, float3 lightDirection) {
+  return max(0.0, dot(lightDirection, surfaceNormal));
+}
+
+float specularAttenuation(float surfaceShininess, float3 surfaceNormal, float3 halfAngle) {
+  return pow(max(0.0, dot(halfAngle, surfaceNormal)), surfaceShininess);       
+}
+
+/*********** Vertex shader ******/
+
+void MainVS(float4 position : POSITION,
+			float4 texcoord : TEXCOORD0,
+			float4 normal : NORMAL,
+
+        out float4 clipPosition : POSITION,
+        out float4 outposition    : TEXCOORD0,
+        out float4 outnormal      : TEXCOORD1,
+        out float4 outtex         : TEXCOORD2)
+{
+	float4x4 modelViewProj = glstate.matrix.mvp;
+    clipPosition = mul(modelViewProj, position);
+    outposition = position;
+    outnormal = normal;
+    outtex = texcoord;
+}
+
+uniform float4x4 view;
+
+void MainPS(float4 position : TEXCOORD0,
+			float4 normal   : TEXCOORD1,
+			float4 texcoord : TEXCOORD2,
+			
+            out float4 color: COLOR,
+            uniform sampler2D texture : TEXUNIT0)
+{
+	//static data
+	float4x4 modelViewProj = glstate.matrix.mvp;
+	float4x4 modelView = glstate.matrix.modelview[0];
+	float4x4 modelViewIT = glstate.matrix.invtrans.modelview[0];
+	float4 materialAmbient = glstate.material.ambient;
+	float4 materialDiffuse = glstate.material.diffuse;
+	//float4 materialDiffuse = tex2D(texture, texcoord.xy);
+	float4 materialSpecular = glstate.material.specular;
+	float shininess = glstate.material.shininess.x;
+	float3 eyeLightPosition   = glstate.light[0].position.xyz;
+	float4 lightDiffuse = glstate.light[0].diffuse;
+	float4 lightAmbient = glstate.light[0].ambient;
+	float4 lightSpecular = glstate.light[0].specular;
+	float4 globalAmbient = glstate.lightmodel.ambient;
+	
+	//data for phong lighting
+	float3 eyeSurfacePosition = mul(modelView, position).xyz;
+	float3 eyeViewerDirection = normalize(-eyeSurfacePosition);
+	float3 eyeSurfaceNormal   = normalize(mul(modelViewIT, normal).xyz);
+	float3 eyeLightDirection  = normalize(eyeLightPosition - eyeSurfacePosition);
+	float3 eyeHalfAngle       = normalize(eyeViewerDirection + eyeLightDirection);
+	
+	//phong model with enhanced ambient light and specular map
+	color = materialAmbient * lightAmbient;// * 2 * max(0.0,dot(eyeSurfaceNormal, eyeViewerDirection)); 
+    float3 data = tex2D(texture, texcoord.xy).xyz;
+    float specd = sqrt(dot(data,data));
+	color += materialAmbient * globalAmbient * abs(dot(eyeSurfaceNormal, eyeLightDirection));
+    color += lightDiffuse * materialDiffuse * diffuseAttenuation(eyeSurfaceNormal, eyeLightDirection);
+    color += specd * lightSpecular * materialSpecular * specularAttenuation(shininess, eyeSurfaceNormal, eyeHalfAngle);
+    
+}
