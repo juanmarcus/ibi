@@ -18,7 +18,7 @@ namespace ibi
 class FragmentProgram: public GPUProgram
 {
 public:
-	FragmentProgram();
+	FragmentProgram(GPUProgramManager* parent);
 	~FragmentProgram();
 };
 

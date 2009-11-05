@@ -30,7 +30,7 @@ public:
 
 	VertexProgram* loadVertexProgram(String path, String entry = "main");
 	FragmentProgram* loadFragmentProgram(String path, String entry = "main");
-protected:
+
 	/*
 	 * Checks current context for errors.
 	 */

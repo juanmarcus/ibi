@@ -10,7 +10,8 @@
 namespace ibi
 {
 
-VertexProgram::VertexProgram()
+VertexProgram::VertexProgram(GPUProgramManager* parent) :
+	GPUProgram(parent)
 {
 
 }

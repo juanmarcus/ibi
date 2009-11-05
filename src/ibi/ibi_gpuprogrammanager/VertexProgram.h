@@ -18,7 +18,7 @@ namespace ibi
 class VertexProgram: public GPUProgram
 {
 public:
-	VertexProgram();
+	VertexProgram(GPUProgramManager* parent);
 	~VertexProgram();
 };
 

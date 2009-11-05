@@ -10,7 +10,8 @@
 namespace ibi
 {
 
-FragmentProgram::FragmentProgram()
+FragmentProgram::FragmentProgram(GPUProgramManager* parent) :
+	GPUProgram(parent)
 {
 
 }

@@ -41,7 +41,7 @@ void GPUProgramManager::init()
 
 VertexProgram* GPUProgramManager::loadVertexProgram(String path, String entry)
 {
-	VertexProgram* prog = new VertexProgram();
+	VertexProgram* prog = new VertexProgram(this);
 
 	cgGLEnableProfile(vertex_profile);
 
@@ -65,7 +65,7 @@ VertexProgram* GPUProgramManager::loadVertexProgram(String path, String entry)
 FragmentProgram* GPUProgramManager::loadFragmentProgram(String path,
 		String entry)
 {
-	FragmentProgram* prog = new FragmentProgram();
+	FragmentProgram* prog = new FragmentProgram(this);
 
 	cgGLEnableProfile(fragment_profile);
 
