@@ -15,11 +15,6 @@
 namespace ibi
 {
 
-enum FB_status
-{
-	FB_COMPLETE, FB_INCOMPLETE
-};
-
 class Framebuffer
 {
 public:
@@ -31,16 +26,32 @@ public:
 	void enable();
 	void disable();
 
+	void beginRender();
+	void endRender();
+
 	void setTarget(Texture* t);
 
-	FB_status getStatus();
+	void checkStatus();
 private:
+
 	bool enabled;
+
+	bool rendering;
 
 	/**
 	 * Generated OpenGL name.
 	 */
 	GLuint name;
+
+	/*
+	 * Texture to render to.
+	 */
+	Texture* target;
+
+	/*
+	 * Temporary viewport.
+	 */
+	int oldViewport[4];
 };
 
 } // namespace ibi

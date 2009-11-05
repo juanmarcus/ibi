@@ -6,12 +6,13 @@
  */
 
 #include "Framebuffer.h"
+#include "ibi_error/Exception.h"
 
 namespace ibi
 {
 
 Framebuffer::Framebuffer() :
-	enabled(false)
+	enabled(false), rendering(false)
 {
 
 }
@@ -40,28 +41,52 @@ void Framebuffer::disable()
 
 void Framebuffer::setTarget(Texture* t)
 {
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-			t->getTarget(), t->getGLName(), 0);
+	this->target = t;
 }
 
-FB_status Framebuffer::getStatus()
+void Framebuffer::beginRender()
 {
-	bool prev = enabled;
-	enable();
+	if (!enabled)
+	{
+		throw Exception("Trying to operate on a disabled framebuffer object.");
+	}
+	if (rendering)
+	{
+		throw Exception("Not matching beginRender endRender block.");
+	}
+	// Bind target texture
+	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
+			target->getTarget(), target->getGLName(), 0);
+	checkStatus();
+	// Save old viewport
+	glGetIntegerv(GL_VIEWPORT, oldViewport);
+	glViewport(0, 0, target->getWidth(), target->getHeight());
+	rendering = true;
+}
+
+void Framebuffer::endRender()
+{
+	if (!enabled)
+	{
+		throw Exception("Trying to operate on a disabled framebuffer object.");
+	}
+	if (!rendering)
+	{
+		throw Exception("Not matching beginRender endRender block.");
+	}
+	// Restore old viewport
+	glViewport(oldViewport[0], oldViewport[1], oldViewport[2], oldViewport[3]);
+	rendering = false;
+}
+
+void Framebuffer::checkStatus()
+{
 	GLenum status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 
 	if (status != GL_FRAMEBUFFER_COMPLETE_EXT)
 	{
-		return FB_INCOMPLETE;
+		throw Exception("Framebuffer state incomplete.");
 	}
-
-	if (!prev)
-	{
-		disable();
-	}
-
-	return FB_COMPLETE;
-
 }
 
 } // namespace ibi
