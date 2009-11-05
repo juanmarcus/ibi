@@ -34,7 +34,7 @@ void GLMode2D::enable()
 		glMatrixMode(GL_PROJECTION);
 		glPushMatrix();
 		glLoadIdentity();
-		glOrtho(0, 1, 0, 1, -1, 1);
+		glOrtho(0, width, 0, height, -1, 1);
 
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
@@ -65,6 +65,25 @@ void GLMode2D::disable()
 
 		active = false;
 	}
+}
+
+void GLMode2D::drawFullScreenQuad()
+{
+	glBegin(GL_QUADS);
+
+	glTexCoord2d(0.0, 0.0);
+	glVertex2d(0.0, 0.0);
+
+	glTexCoord2d(1.0, 0.0);
+	glVertex2d(width, 0.0);
+
+	glTexCoord2d(1.0, 1.0);
+	glVertex2d(width, height);
+
+	glTexCoord2d(0.0, 1.0);
+	glVertex2d(0.0, height);
+
+	glEnd();
 }
 
 } // namespace ibi

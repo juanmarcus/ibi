@@ -23,6 +23,11 @@ void ibiQGLViewer::stop2DMode()
 	mode2d.disable();
 }
 
+void ibiQGLViewer::drawFullScreenQuad()
+{
+	mode2d.drawFullScreenQuad();
+}
+
 void ibiQGLViewer::resizeGL(int width, int height)
 {
 	QGLWidget::resizeGL(width, height);
@@ -37,6 +42,7 @@ void ibiQGLViewer::resizeGL(int width, int height)
 			float actual_width = height * desiredAspectRatio;
 			glViewport((width - actual_width) / 2.0, 0.0, actual_width, height);
 			camera()->setScreenWidthAndHeight(actual_width, height);
+			mode2d.setScreenDimensions(actual_width, height);
 		}
 		else
 		{
@@ -44,12 +50,14 @@ void ibiQGLViewer::resizeGL(int width, int height)
 			glViewport(0.0, (height - actual_height) / 2.0, width,
 					actual_height);
 			camera()->setScreenWidthAndHeight(width, actual_height);
+			mode2d.setScreenDimensions(width, actual_height);
 		}
 	}
 	else
 	{
 		glViewport(0, 0, GLint(width), GLint(height));
 		camera()->setScreenWidthAndHeight(width, height);
+		mode2d.setScreenDimensions(width, height);
 	}
 }
 

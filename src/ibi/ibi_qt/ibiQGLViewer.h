@@ -29,6 +29,11 @@ public:
 	 */
 	void stop2DMode();
 
+	/*
+	 * Draws a full screen quad.
+	 */
+	void drawFullScreenQuad();
+
 	void resizeGL(int w, int h);
 
 	void setDesiredAspectRatio(float ratio);

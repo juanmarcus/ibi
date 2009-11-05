@@ -25,6 +25,8 @@ public:
 	void enable();
 	void disable();
 
+	void drawFullScreenQuad();
+
 private:
 	bool active;
 
