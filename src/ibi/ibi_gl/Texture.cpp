@@ -36,6 +36,16 @@ void Texture::setDimensions(int w, int h, int d)
 	this->depth = d;
 }
 
+int Texture::getWidth()
+{
+	return this->width;
+}
+
+int Texture::getHeight()
+{
+	return this->height;
+}
+
 GLuint Texture::getGLName()
 {
 	return this->glname;

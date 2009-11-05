@@ -56,6 +56,8 @@ public:
 
 	GLuint getGLName();
 	GLenum getTarget();
+	int getWidth();
+	int getHeight();
 
 	void init();
 	void enable();
