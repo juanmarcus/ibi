@@ -38,6 +38,12 @@ void Framebuffer::disable()
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 }
 
+void Framebuffer::setTarget(Texture* t)
+{
+	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
+			t->getTarget(), t->getGLName(), 0);
+}
+
 FB_status Framebuffer::getStatus()
 {
 	bool prev = enabled;

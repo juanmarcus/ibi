@@ -55,6 +55,7 @@ public:
 	void setDimensions(int w, int h, int d = 0);
 
 	GLuint getGLName();
+	GLenum getTarget();
 
 	void init();
 	void enable();

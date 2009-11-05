@@ -41,6 +41,11 @@ GLuint Texture::getGLName()
 	return this->glname;
 }
 
+GLenum Texture::getTarget()
+{
+	return this->target;
+}
+
 void Texture::enable()
 {
 	if (glname)

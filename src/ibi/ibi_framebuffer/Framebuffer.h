@@ -10,6 +10,7 @@
 
 #include "ibi.h"
 #include "ibi_gl/ibi_gl.h"
+#include "ibi_gl/Texture.h"
 
 namespace ibi
 {
@@ -29,6 +30,8 @@ public:
 
 	void enable();
 	void disable();
+
+	void setTarget(Texture* t);
 
 	FB_status getStatus();
 private:
