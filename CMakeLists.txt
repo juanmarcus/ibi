@@ -31,6 +31,7 @@ find_package (Teem REQUIRED)
 find_package (Qt4 REQUIRED)
 find_package (Boost 1.39.0 COMPONENTS program_options REQUIRED)
 find_package (QGLViewer REQUIRED)
+find_package (GLEW REQUIRED)
 find_package (GLUT REQUIRED)
 find_package (Cg REQUIRED)
 
@@ -46,6 +47,7 @@ include (${QT_USE_FILE})
 INCLUDE_DIRECTORIES (
     ${QGLVIEWER_INCLUDE_DIR}
     ${CG_INCLUDE_PATH}
+    ${GLEW_INCLUDE_PATH}
     ${GLUT_INCLUDE_DIR}
 )
 
@@ -65,7 +67,7 @@ ADD_DEFINITIONS(
 
 #-----------------------------------------------------------------------------
 # Configure libraries 
-set(LIBS ${LIBS} ${Teem_LIBRARIES} ${CG_LIBRARY} ${CG_GL_LIBRARY} ${QT_LIBRARIES} ${Boost_LIBRARIES} ${QGLVIEWER_LIBRARY} ${GLUT_LIBRARIES})
+set(LIBS ${LIBS} ${Teem_LIBRARIES} ${CG_LIBRARY} ${CG_GL_LIBRARY} ${QT_LIBRARIES} ${Boost_LIBRARIES} ${QGLVIEWER_LIBRARY} ${GLUT_LIBRARIES} ${GLEW_LIBRARY})
 
 #-----------------------------------------------------------------------------
 # Configure destination dirs
