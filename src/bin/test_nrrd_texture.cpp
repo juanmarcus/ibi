@@ -70,10 +70,10 @@ struct init
 		tinfo.target = GL_TEXTURE_2D;
 		tinfo.options["nrrd"] = nin;
 
-		TextureManager manager;
-		manager.loadPlugin("build/lib/libtexture_loader_nrrd.so");
+		TextureManager* manager = TextureManager::getInstance();
+		manager->loadPlugin("build/lib/libtexture_loader_nrrd.so");
 
-		t = manager.load(tinfo);
+		t = manager->load(tinfo);
 
 		widget->setDesiredAspectRatio(1.0);
 	}

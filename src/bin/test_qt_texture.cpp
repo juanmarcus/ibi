@@ -42,10 +42,10 @@ struct init
 		tinfo.target = GL_TEXTURE_2D;
 		tinfo.options["filename"] = String("data/image.png");
 
-		TextureManager manager;
-		manager.loadPlugin("build/lib/libtexture_loader_qt.so");
+		TextureManager* manager = TextureManager::getInstance();
+		manager->loadPlugin("build/lib/libtexture_loader_qt.so");
 
-		t = manager.load(tinfo);
+		t = manager->load(tinfo);
 
 		widget->setDesiredAspectRatio(1.0);
 	}

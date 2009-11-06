@@ -17,8 +17,11 @@ namespace ibi
 
 class TextureManager
 {
-public:
+protected:
 	TextureManager();
+public:
+	static TextureManager* getInstance();
+
 	~TextureManager();
 
 	void registerTextureLoader(String type,
@@ -32,6 +35,8 @@ public:
 private:
 	std::map<String, TextureLoaderFactory*> factories;
 	std::vector<void*> loadedPlugins;
+
+	static TextureManager* instance;
 };
 
 } // namespace ibi

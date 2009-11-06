@@ -8,6 +8,7 @@
 #include "ibi.h"
 #include "ibi_texturemanager/TextureManager.h"
 #include "ibi_gl/Texture.h"
+#include "ibi_error/Exception.h"
 #include <boost/any.hpp>
 #include <QtGui/QImage>
 #include <QtOpenGL/QGLWidget>

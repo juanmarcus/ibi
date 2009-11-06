@@ -12,6 +12,17 @@
 namespace ibi
 {
 
+TextureManager* TextureManager::instance = 0;
+
+TextureManager* TextureManager::getInstance()
+{
+	if (!instance)
+	{
+		instance = new TextureManager();
+	}
+	return instance;
+}
+
 TextureManager::TextureManager()
 {
 }
