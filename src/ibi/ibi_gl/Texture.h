@@ -52,7 +52,7 @@ public:
 	~Texture();
 
 	void setTarget(GLenum target);
-	void setDimensions(int w, int h, int d = 0);
+	void setDimensions(int w, int h = 0, int d = 0);
 
 	GLuint getGLName();
 	GLenum getTarget();
