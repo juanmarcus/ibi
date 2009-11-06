@@ -45,7 +45,7 @@ class TextureLoader_nrrd3D: public TextureLoader
 //		GLuint name = texture->getGLName();
 
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-		glTexImage3D(info.target, 0, 1, width, height, depth, 0, GL_LUMINANCE,
+		glTexImage3D(info.target, 0, GL_ALPHA, width, height, depth, 0, GL_ALPHA,
 				convert_type_to_enum(nin->type), nin->data);
 
 		texture->setDimensions(width, height, depth);

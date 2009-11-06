@@ -8,13 +8,14 @@
 #include "ibi.h"
 #include "ibi_texturemanager/TextureManager.h"
 #include "ibi_gl/Texture.h"
+#include "ibi_error/Exception.h"
 #include <boost/any.hpp>
 #include <QtGui/QImage>
 #include <QtOpenGL/QGLWidget>
 
 using namespace ibi;
 
-class TextureLoader_qt: public TextureLoader
+class TextureLoader_transfer_func: public TextureLoader
 {
 	Texture* load(TextureLoadingInfo& info)
 	{
@@ -34,23 +35,21 @@ class TextureLoader_qt: public TextureLoader
 
 		t = QGLWidget::convertToGLFormat(b);
 
-		GLuint name = texture->getGLName();
+		glTexImage1D(info.target, 0, GL_RGB, t.width(), 0, GL_RGBA,
+				GL_UNSIGNED_BYTE, t.bits());
 
-		glTexImage2D(info.target, 0, GL_RGBA, t.width(), t.height(), 0,
-				GL_RGBA, GL_UNSIGNED_BYTE, t.bits());
-
-		texture->setDimensions(t.width(), t.height());
+		texture->setDimensions(t.width());
 
 		return texture;
 
 	}
 };
 
-class TextureLoaderFactory_qt: public TextureLoaderFactory
+class TextureLoaderFactory_transfer_func: public TextureLoaderFactory
 {
 	TextureLoader* create()
 	{
-		TextureLoader* loader = new TextureLoader_qt();
+		TextureLoader* loader = new TextureLoader_transfer_func();
 		return loader;
 	}
 };
@@ -60,9 +59,10 @@ extern "C"
 
 void registerPlugin(TextureManager& manager)
 {
-	TextureLoaderFactory_qt* loaderF = new TextureLoaderFactory_qt();
+	TextureLoaderFactory_transfer_func* loaderF =
+			new TextureLoaderFactory_transfer_func();
 
-	manager.registerTextureLoader(String("qt"), loaderF);
+	manager.registerTextureLoader(String("transfer_func"), loaderF);
 }
 
 }
