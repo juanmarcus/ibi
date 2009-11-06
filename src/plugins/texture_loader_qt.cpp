@@ -38,8 +38,6 @@ class TextureLoader_qt: public TextureLoader
 
 		glTexImage2D(info.target, 0, 3, t.width(), t.height(), 0, GL_RGBA,
 				GL_UNSIGNED_BYTE, t.bits());
-		glTexParameteri(info.target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(info.target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		texture->setDimensions(t.width(), t.height());
 
