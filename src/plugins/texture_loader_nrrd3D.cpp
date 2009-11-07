@@ -16,12 +16,8 @@ using namespace ibi;
 
 class TextureLoader_nrrd3D: public TextureLoader
 {
-	Texture* load(TextureLoadingInfo& info)
+	void load(TextureLoadingInfo& info, Texture* texture)
 	{
-		Texture* texture = new Texture();
-		texture->setTarget(info.target);
-		texture->init();
-
 		Nrrd* nin = boost::any_cast<Nrrd*>(info.options["nrrd"]);
 		//		Nrrd* nout = nrrdNew();
 		//		nrrdConvert(nout,nin,nrrdTypeUChar);
@@ -42,18 +38,16 @@ class TextureLoader_nrrd3D: public TextureLoader
 		//					linesize);
 		//		}
 
-//		GLuint name = texture->getGLName();
+		//		GLuint name = texture->getGLName();
 
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-		glTexImage3D(info.target, 0, GL_ALPHA, width, height, depth, 0, GL_ALPHA,
-				convert_type_to_enum(nin->type), nin->data);
+		glTexImage3D(info.target, 0, GL_ALPHA, width, height, depth, 0,
+				GL_ALPHA, convert_type_to_enum(nin->type), nin->data);
 
 		texture->setDimensions(width, height, depth);
 
 		//		free( tmpdata);
 		//		nrrdNuke(nout);
-
-		return texture;
 
 	}
 };

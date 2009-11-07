@@ -16,12 +16,8 @@ using namespace ibi;
 
 class TextureLoader_nrrd: public TextureLoader
 {
-	Texture* load(TextureLoadingInfo& info)
+	void load(TextureLoadingInfo& info, Texture* texture)
 	{
-		Texture* texture = new Texture();
-		texture->setTarget(info.target);
-		texture->init();
-
 		Nrrd* nin = boost::any_cast<Nrrd*>(info.options["nrrd"]);
 		//		Nrrd* nout = nrrdNew();
 		//		nrrdConvert(nout,nin,nrrdTypeUChar);
@@ -51,8 +47,6 @@ class TextureLoader_nrrd: public TextureLoader
 
 		free(tmpdata);
 		//		nrrdNuke(nout);
-
-		return texture;
 
 	}
 };

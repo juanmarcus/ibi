@@ -17,12 +17,8 @@ using namespace ibi;
 
 class TextureLoader_transfer_func: public TextureLoader
 {
-	Texture* load(TextureLoadingInfo& info)
+	void load(TextureLoadingInfo& info, Texture* texture)
 	{
-		Texture* texture = new Texture();
-		texture->setTarget(info.target);
-		texture->init();
-
 		String filename = boost::any_cast<String>(info.options["filename"]);
 
 		QImage t;
@@ -39,8 +35,6 @@ class TextureLoader_transfer_func: public TextureLoader
 				GL_UNSIGNED_BYTE, t.bits());
 
 		texture->setDimensions(t.width());
-
-		return texture;
 
 	}
 };

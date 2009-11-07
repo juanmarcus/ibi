@@ -21,7 +21,7 @@ namespace ibi
 class TextureLoader
 {
 public:
-	virtual Texture* load(TextureLoadingInfo& info) = 0;
+	virtual void load(TextureLoadingInfo& info, Texture* t) = 0;
 };
 
 /*

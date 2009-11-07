@@ -29,11 +29,9 @@ public:
 
 	void loadPlugin(String filename);
 
-	TextureLoader* getLoader(String type);
-
 	Texture* load(TextureLoadingInfo& info);
 private:
-	std::map<String, TextureLoaderFactory*> factories;
+	std::map<String, TextureLoader*> loaders;
 	std::vector<void*> loadedPlugins;
 
 	static TextureManager* instance;

@@ -41,7 +41,7 @@ TextureManager::~TextureManager()
 void TextureManager::registerTextureLoader(String type,
 		TextureLoaderFactory* textureLoaderFactory)
 {
-	factories[type] = textureLoaderFactory;
+	loaders[type] = textureLoaderFactory->create();
 }
 
 void TextureManager::loadPlugin(String filename)
@@ -69,28 +69,33 @@ void TextureManager::loadPlugin(String filename)
 	registerPlugin(*this);
 }
 
-TextureLoader* TextureManager::getLoader(String type)
-{
-	if (factories.count(type) == 0)
-	{
-		throw Exception("Problem finding loader for type.");
-	}
-	else
-	{
-		return factories[type]->create();
-	}
-}
-
 Texture* TextureManager::load(TextureLoadingInfo& info)
 {
 	if (info.texture_type == "")
 	{
 		throw Exception("Texture type not specified.");
 	}
-	TextureLoader* loader = getLoader(info.texture_type);
-	Texture* t = loader->load(info);
-	delete loader;
-	return t;
+
+	if (loaders.count(info.texture_type) == 0)
+	{
+		throw Exception("Problem finding loader for type.");
+	}
+
+	// Get loader
+	TextureLoader* loader = loaders[info.texture_type];
+
+	// Initialize texture
+	Texture* texture = new Texture();
+	texture->setTarget(info.target);
+	texture->init();
+
+	// Call plugin loader
+	loader->load(info, texture);
+
+	// Disable texture to avoid problems
+	texture->disable();
+
+	return texture;
 }
 
 } // namespace ibi

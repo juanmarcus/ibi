@@ -17,12 +17,8 @@ using namespace ibi;
 
 class TextureLoader_empty: public TextureLoader
 {
-	Texture* load(TextureLoadingInfo& info)
+	void load(TextureLoadingInfo& info, Texture* texture)
 	{
-		Texture* texture = new Texture();
-		texture->setTarget(info.target);
-		texture->init();
-
 		int width = boost::any_cast<int>(info.options["width"]);
 		int height = boost::any_cast<int>(info.options["height"]);
 		GLint internalformat = boost::any_cast<GLint>(
@@ -37,8 +33,6 @@ class TextureLoader_empty: public TextureLoader
 				type, NULL);
 
 		texture->setDimensions(width, height);
-
-		return texture;
 
 	}
 };
