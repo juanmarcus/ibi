@@ -36,7 +36,7 @@ void ibiQGLViewer::resizeGL(int width, int height)
 
 	if (desiredAspectRatio > 0.0)
 	{
-		if (width > height)
+		if (width > (desiredAspectRatio* height))
 		{
 			float actual_width = height * desiredAspectRatio;
 			glViewport((width - actual_width) / 2.0, 0.0, actual_width, height);
