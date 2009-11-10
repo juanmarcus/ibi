@@ -17,17 +17,19 @@ namespace ibi
 class Exception: public std::exception
 {
 public:
-	Exception(String msg);
+	Exception(String file, String general, String detail = "");
 
 	~Exception() throw ();
 
 	virtual const char* what() const throw ()
 	{
-		return msg.c_str();
+		String message = file + ": " + general + "\n" + detail;
+		return message.c_str();
 	}
 private:
-	String msg;
-
+	String file;
+	String general;
+	String detail;
 };
 
 } // namespace ibi

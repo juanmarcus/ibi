@@ -92,9 +92,10 @@ void GPUProgramManager::checkError()
 	if (lastError)
 	{
 		//		cout << cgGetErrorString(lastError) << endl;
-		if (context != NULL)
-			cout << cgGetLastListing(context) << endl;
-		throw Exception(cgGetErrorString(lastError));
+		//		if (context != NULL)
+		//			cout << cgGetLastListing(context) << endl;
+		throw Exception("GPUProgramManager.cpp", cgGetErrorString(lastError),
+				cgGetLastListing(context));
 	}
 }
 

@@ -48,11 +48,13 @@ void Framebuffer::beginRender()
 {
 	if (!enabled)
 	{
-		throw Exception("Trying to operate on a disabled framebuffer object.");
+		throw Exception("Framebuffer.cpp", "Problem starting render.",
+				"Trying to operate on a disabled framebuffer object.");
 	}
 	if (rendering)
 	{
-		throw Exception("Not matching beginRender endRender block.");
+		throw Exception("Framebuffer.cpp", "Problem starting render.",
+				"Not matching beginRender endRender block.");
 	}
 	// Bind target texture
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
@@ -68,11 +70,13 @@ void Framebuffer::endRender()
 {
 	if (!enabled)
 	{
-		throw Exception("Trying to operate on a disabled framebuffer object.");
+		throw Exception("Framebuffer.cpp", "Problem finishing render.",
+				"Trying to operate on a disabled framebuffer object.");
 	}
 	if (!rendering)
 	{
-		throw Exception("Not matching beginRender endRender block.");
+		throw Exception("Framebuffer.cpp", "Problem finishing render.",
+				"Not matching beginRender endRender block.");
 	}
 	// Restore old viewport
 	glViewport(oldViewport[0], oldViewport[1], oldViewport[2], oldViewport[3]);
@@ -85,7 +89,8 @@ void Framebuffer::checkStatus()
 
 	if (status != GL_FRAMEBUFFER_COMPLETE_EXT)
 	{
-		throw Exception("Framebuffer state incomplete.");
+		throw Exception("Framebuffer.cpp", "Framebuffer consistence problem.",
+				"Framebuffer state incomplete.");
 	}
 }
 

@@ -12,10 +12,12 @@ namespace ibi
 
 using namespace std;
 
-Exception::Exception(string msg) :
+Exception::Exception(String file, String general, String detail) :
 	exception()
 {
-	this->msg = msg;
+	this->file = file;
+	this->general = general;
+	this->detail = detail;
 }
 
 Exception::~Exception() throw ()

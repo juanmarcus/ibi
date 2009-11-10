@@ -49,7 +49,8 @@ void TextureManager::loadPlugin(String filename)
 	void* phandle = dlopen(filename.c_str(), RTLD_NOW);
 	if (!phandle)
 	{
-		throw Exception("Problem loading plugin.");
+		throw Exception("TextureManager.cpp", "Problem loading plugin.",
+				"File not found: " + filename);
 	}
 
 	// load the entry point
@@ -62,7 +63,8 @@ void TextureManager::loadPlugin(String filename)
 	const char *dlsym_error = dlerror();
 	if (dlsym_error)
 	{
-		throw Exception("Problem loading entry point.");
+		throw Exception("TextureManager.cpp", "Problem loading entry point.",
+				"Can't find a function called 'registerPlugin' in the library.");
 		dlclose(phandle);
 	}
 
@@ -73,12 +75,14 @@ Texture* TextureManager::load(TextureLoadingInfo& info)
 {
 	if (info.texture_type == "")
 	{
-		throw Exception("Texture type not specified.");
+		throw Exception("TextureManager.cpp", "Texture type not specified.");
 	}
 
 	if (loaders.count(info.texture_type) == 0)
 	{
-		throw Exception("Problem finding loader for type.");
+		throw Exception("TextureManager.cpp",
+				"Problem finding loader for type.", "Type: "
+						+ info.texture_type);
 	}
 
 	// Get loader

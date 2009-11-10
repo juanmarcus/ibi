@@ -26,7 +26,8 @@ class TextureLoader_qt: public TextureLoader
 
 		if (!b.load(filename.c_str()))
 		{
-			throw Exception("File not found");
+			throw Exception("texture_loader_qt.cpp",
+					"Problem loading texture.", "File not found: " + filename);
 		}
 
 		t = QGLWidget::convertToGLFormat(b);
@@ -53,11 +54,11 @@ class TextureLoaderFactory_qt: public TextureLoaderFactory
 extern "C"
 {
 
-void registerPlugin(TextureManager& manager)
-{
-	TextureLoaderFactory_qt* loaderF = new TextureLoaderFactory_qt();
+	void registerPlugin(TextureManager& manager)
+	{
+		TextureLoaderFactory_qt* loaderF = new TextureLoaderFactory_qt();
 
-	manager.registerTextureLoader(String("qt"), loaderF);
-}
+		manager.registerTextureLoader(String("qt"), loaderF);
+	}
 
 }

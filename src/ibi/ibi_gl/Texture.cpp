@@ -65,7 +65,8 @@ void Texture::enable()
 	}
 	else
 	{
-		throw Exception("Problem with texture.");
+		throw Exception("Texture.cpp", "Problem with texture.",
+				"Missing texture name.");
 	}
 }
 
