@@ -27,6 +27,34 @@ void ibiQGLViewer::drawFullScreenQuad()
 	mode2d.drawFullScreenQuad();
 }
 
+Vector3 ibiQGLViewer::normalizedViewportCoordinates(int x, int y)
+{
+	int vPort[4];
+
+	glGetIntegerv(GL_VIEWPORT, vPort);
+
+	Vector3 result;
+	result.x = Real(x - vPort[0]) / Real(vPort[2]);
+	result.y = 1.0 - (Real(y - vPort[1]) / Real(vPort[3]));
+	result.z = 0;
+
+	return result;
+}
+
+Vector3 ibiQGLViewer::absoluteViewportCoordinates(Vector3& point)
+{
+	int vPort[4];
+
+	glGetIntegerv(GL_VIEWPORT, vPort);
+
+	Vector3 result;
+	result.x = (point.x * vPort[2]);
+	result.y = (point.y * vPort[3]);
+	result.z = 0;
+
+	return result;
+}
+
 void ibiQGLViewer::resizeGL(int width, int height)
 {
 	QGLWidget::resizeGL(width, height);
@@ -36,7 +64,7 @@ void ibiQGLViewer::resizeGL(int width, int height)
 
 	if (desiredAspectRatio > 0.0)
 	{
-		if (width > (desiredAspectRatio* height))
+		if (width > (desiredAspectRatio * height))
 		{
 			float actual_width = height * desiredAspectRatio;
 			glViewport((width - actual_width) / 2.0, 0.0, actual_width, height);

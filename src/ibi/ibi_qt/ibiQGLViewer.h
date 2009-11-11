@@ -4,6 +4,7 @@
 #include "ibi.h"
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/GLMode2D.h"
+#include "ibi_geometry/Vector3.h"
 #include <QGLViewer/qglviewer.h>
 
 namespace ibi
@@ -33,6 +34,16 @@ public:
 	 * Draws a full screen quad.
 	 */
 	void drawFullScreenQuad();
+
+	/**
+	 * Returns normalized screen coordinates from Qt screen coordinates.
+	 */
+	Vector3 normalizedViewportCoordinates(int x, int y);
+
+	/*
+	 * Return absolute screen coordinates from normalized coordinates.
+	 */
+	Vector3 absoluteViewportCoordinates(Vector3& point);
 
 	void resizeGL(int w, int h);
 
