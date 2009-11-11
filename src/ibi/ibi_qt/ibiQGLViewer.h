@@ -49,8 +49,14 @@ public:
 
 	void setDesiredAspectRatio(float ratio);
 
+	void saveViewport();
+
+	void restoreViewport();
+
 private:
 	GLMode2D mode2d;
+
+	int savedViewport[4];
 
 	float desiredAspectRatio;
 };

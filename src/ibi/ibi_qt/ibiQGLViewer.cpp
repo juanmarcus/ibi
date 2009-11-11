@@ -93,28 +93,15 @@ void ibiQGLViewer::setDesiredAspectRatio(float ratio)
 	this->desiredAspectRatio = ratio;
 }
 
-//void ibiQtSmartGLWidget::resizeGL(int w, int h)
-//{
-//	if (autoViewport)
-//	{
-//		setViewportAuto();
-//	}
-//}
+void ibiQGLViewer::saveViewport()
+{
+	glGetIntegerv(GL_VIEWPORT, savedViewport);
+}
 
-//void ibiQtSmartGLWidget::setViewportAuto(bool keepAspect)
-//{
-//	if (keepAspect)
-//	{
-//		int width = size().width();
-//		int height = size().height();
-//		int side = qMin(width, height);
-//		glViewport((width - side) / 2, (height - side) / 2, side, side);
-//	}
-//	else
-//	{
-//		// Stupid viewport setter
-//		glViewport(0, 0, size().width(), size().height());
-//	}
-//}
+void ibiQGLViewer::restoreViewport()
+{
+	glViewport(savedViewport[0], savedViewport[1], savedViewport[2],
+			savedViewport[3]);
+}
 
 } // namespace ibi
