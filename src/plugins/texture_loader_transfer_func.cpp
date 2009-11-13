@@ -32,7 +32,7 @@ class TextureLoader_transfer_func: public TextureLoader
 
 		t = QGLWidget::convertToGLFormat(b);
 
-		glTexImage1D(info.target, 0, GL_RGB, t.width(), 0, GL_RGBA,
+		glTexImage1D(info.target, 0, GL_RGBA, t.width(), 0, GL_RGBA,
 				GL_UNSIGNED_BYTE, t.bits());
 
 		texture->setDimensions(t.width());
