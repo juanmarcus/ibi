@@ -15,7 +15,12 @@ class ibiQGLViewer: public QGLViewer
 Q_OBJECT
 
 public:
-	ibiQGLViewer(QWidget* parent = 0);
+	ibiQGLViewer(QWidget *parent = 0, const QGLWidget *shareWidget = 0,
+			Qt::WFlags flags = 0);
+	ibiQGLViewer(QGLContext *context, QWidget *parent = 0,
+			const QGLWidget *shareWidget = 0, Qt::WFlags flags = 0);
+	ibiQGLViewer(const QGLFormat &format, QWidget *parent = 0,
+			const QGLWidget *shareWidget = 0, Qt::WFlags flags = 0);
 	~ibiQGLViewer();
 
 	//==============================================
