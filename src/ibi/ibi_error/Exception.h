@@ -8,7 +8,7 @@
 #ifndef EXCEPTION_H_
 #define EXCEPTION_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <exception>
 
 namespace ibi

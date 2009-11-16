@@ -8,7 +8,7 @@
 #ifndef VECTOR3_H_
 #define VECTOR3_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <cassert>
 #include "ibi_math/Math.h"
 #include "Quaternion.h"

@@ -8,7 +8,7 @@
 #ifndef INTERSECTION_H_
 #define INTERSECTION_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_geometry/Ray.h"
 #include "ibi_geometry/AxisAlignedBox.h"
 #include "ibi_geometry/Triangle.h"

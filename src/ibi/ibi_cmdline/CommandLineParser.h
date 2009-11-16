@@ -8,7 +8,7 @@
 #ifndef COMMANDLINEPARSER_H_
 #define COMMANDLINEPARSER_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <boost/program_options.hpp>
 
 namespace ibi

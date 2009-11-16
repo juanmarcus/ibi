@@ -1,7 +1,7 @@
 #ifndef IBIQGLWIDGET_H
 #define IBIQGLWIDGET_H
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
 #include <boost/function.hpp>
 #include "ibiQGLViewer.h"

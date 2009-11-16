@@ -8,7 +8,7 @@
 #ifndef INTERPOLATION_H_
 #define INTERPOLATION_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <vector>
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Ray.h"

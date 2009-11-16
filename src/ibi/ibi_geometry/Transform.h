@@ -8,7 +8,7 @@
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "Ray.h"
 #include "Matrix4.h"
 

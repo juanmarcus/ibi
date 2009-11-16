@@ -8,7 +8,7 @@
 #ifndef MATH_H_
 #define MATH_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <cmath>
 #include <cassert>
 #include <limits>

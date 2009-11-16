@@ -8,7 +8,7 @@
 #ifndef GPUPROGRAM_H_
 #define GPUPROGRAM_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/Texture.h"
 #include <Cg/cg.h>

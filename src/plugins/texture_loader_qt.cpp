@@ -5,7 +5,7 @@
  *      Author: juanmarcus
  */
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_texturemanager/TextureManager.h"
 #include "ibi_gl/Texture.h"
 #include "ibi_error/Exception.h"

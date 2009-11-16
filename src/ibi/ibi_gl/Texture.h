@@ -8,7 +8,7 @@
 #ifndef TEXTURE_H_
 #define TEXTURE_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_gl.h"
 #include <boost/any.hpp>
 #include <map>

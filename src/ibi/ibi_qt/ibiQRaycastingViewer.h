@@ -1,7 +1,7 @@
 #ifndef RAYCASTINGVIEWER_H
 #define RAYCASTINGVIEWER_H
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
 #include "Cg/cg.h"
 #include "Cg/cgGL.h"

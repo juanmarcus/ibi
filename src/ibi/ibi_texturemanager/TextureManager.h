@@ -8,7 +8,7 @@
 #ifndef TEXTUREMANAGER_H_
 #define TEXTUREMANAGER_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <vector>
 #include "TextureLoader.h"
 

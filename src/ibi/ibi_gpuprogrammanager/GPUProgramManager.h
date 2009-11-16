@@ -8,7 +8,7 @@
 #ifndef GPUPROGRAMMANAGER_H_
 #define GPUPROGRAMMANAGER_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
 #include "Cg/cg.h"
 #include "VertexProgram.h"

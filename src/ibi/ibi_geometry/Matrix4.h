@@ -8,7 +8,7 @@
 #ifndef MATRIX4_H_
 #define MATRIX4_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "Vector3.h"
 #include "Matrix3.h"
 

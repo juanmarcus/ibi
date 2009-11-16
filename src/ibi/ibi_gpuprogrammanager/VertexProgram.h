@@ -8,7 +8,7 @@
 #ifndef VERTEXPROGRAM_H_
 #define VERTEXPROGRAM_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include <Cg/cg.h>
 #include "GPUProgram.h"
 

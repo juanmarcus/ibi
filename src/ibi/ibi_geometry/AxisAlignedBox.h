@@ -8,7 +8,7 @@
 #ifndef AXISALIGNEDBOX_H_
 #define AXISALIGNEDBOX_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "Vector3.h"
 
 namespace ibi

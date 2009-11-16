@@ -8,7 +8,7 @@
 #ifndef QUATERNION_H_
 #define QUATERNION_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_math/Math.h"
 #include <cassert>
 

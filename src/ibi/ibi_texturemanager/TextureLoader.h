@@ -8,7 +8,7 @@
 #ifndef TEXTURELOADER_H_
 #define TEXTURELOADER_H_
 
-#include "ibi.h"
+#include "ibi_internal.h"
 #include "ibi_factory/Factory.h"
 #include "ibi_gl/Texture.h"
 
