@@ -14,7 +14,7 @@ namespace ibi
 Framebuffer::Framebuffer() :
 	enabled(false)
 {
-
+	glewInit();
 }
 
 Framebuffer::~Framebuffer()
