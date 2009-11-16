@@ -86,8 +86,6 @@ void ibiQRaycastingViewer::initFramebuffer()
 	// Start framebuffer
 	framebuffer.init();
 
-	framebuffer.enable();
-
 	// Start texture manager
 	loadPlugin("../ibi/build/lib/libtexture_loader_empty.so");
 
@@ -116,7 +114,6 @@ void ibiQRaycastingViewer::initFramebuffer()
 	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
 	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 
-	framebuffer.disable();
 }
 
 void ibiQRaycastingViewer::initRaycasting()
@@ -186,7 +183,7 @@ void ibiQRaycastingViewer::render_backface()
 {
 	// draw to backface
 	framebuffer.setTarget(backface);
-	framebuffer.beginRender();
+	framebuffer.bind();
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -194,14 +191,14 @@ void ibiQRaycastingViewer::render_backface()
 	glCullFace(GL_FRONT);
 	drawQuads(1.0, 1.0, 1.0);
 
-	framebuffer.endRender();
+	framebuffer.release();
 }
 
 void ibiQRaycastingViewer::raycasting_pass()
 {
 	// Draw to final image
 	framebuffer.setTarget(final_image);
-	framebuffer.beginRender();
+	framebuffer.bind();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -221,7 +218,7 @@ void ibiQRaycastingViewer::raycasting_pass()
 	vertexProgram->disable();
 	fragmentProgram->disable();
 
-	framebuffer.endRender();
+	framebuffer.release();
 }
 
 // display the final image on the screen
@@ -262,13 +259,9 @@ void ibiQRaycastingViewer::draw()
 
 	glTranslatef(-0.5, -0.5, -0.5); // center the texture cube
 
-	framebuffer.enable();
-
 	render_backface();
 
 	raycasting_pass();
-
-	framebuffer.disable();
 
 	render_buffer_to_screen();
 }

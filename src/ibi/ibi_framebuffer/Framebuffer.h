@@ -23,11 +23,8 @@ public:
 
 	void init();
 
-	void enable();
-	void disable();
-
-	void beginRender();
-	void endRender();
+	void bind();
+	void release();
 
 	void setTarget(Texture* t);
 
@@ -35,8 +32,6 @@ public:
 private:
 
 	bool enabled;
-
-	bool rendering;
 
 	/**
 	 * Generated OpenGL name.

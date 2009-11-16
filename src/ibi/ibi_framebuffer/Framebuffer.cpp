@@ -12,14 +12,14 @@ namespace ibi
 {
 
 Framebuffer::Framebuffer() :
-	enabled(false), rendering(false)
+	enabled(false)
 {
 
 }
 
 Framebuffer::~Framebuffer()
 {
-
+	glDeleteFramebuffersEXT(1, &name);
 }
 
 void Framebuffer::init()
@@ -27,35 +27,9 @@ void Framebuffer::init()
 	glGenFramebuffersEXT(1, &name);
 }
 
-void Framebuffer::enable()
+void Framebuffer::bind()
 {
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, name);
-	enabled = true;
-}
-
-void Framebuffer::disable()
-{
-	enabled = false;
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-}
-
-void Framebuffer::setTarget(Texture* t)
-{
-	this->target = t;
-}
-
-void Framebuffer::beginRender()
-{
-	if (!enabled)
-	{
-		throw Exception("Framebuffer.cpp", "Problem starting render.",
-				"Trying to operate on a disabled framebuffer object.");
-	}
-	if (rendering)
-	{
-		throw Exception("Framebuffer.cpp", "Problem starting render.",
-				"Not matching beginRender endRender block.");
-	}
 	// Bind target texture
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
 			target->getTarget(), target->getGLName(), 0);
@@ -63,24 +37,25 @@ void Framebuffer::beginRender()
 	// Save old viewport
 	glGetIntegerv(GL_VIEWPORT, oldViewport);
 	glViewport(0, 0, target->getWidth(), target->getHeight());
-	rendering = true;
+	enabled = true;
 }
 
-void Framebuffer::endRender()
+void Framebuffer::release()
 {
 	if (!enabled)
 	{
 		throw Exception("Framebuffer.cpp", "Problem finishing render.",
 				"Trying to operate on a disabled framebuffer object.");
 	}
-	if (!rendering)
-	{
-		throw Exception("Framebuffer.cpp", "Problem finishing render.",
-				"Not matching beginRender endRender block.");
-	}
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 	// Restore old viewport
 	glViewport(oldViewport[0], oldViewport[1], oldViewport[2], oldViewport[3]);
-	rendering = false;
+	enabled = false;
+}
+
+void Framebuffer::setTarget(Texture* t)
+{
+	this->target = t;
 }
 
 void Framebuffer::checkStatus()
