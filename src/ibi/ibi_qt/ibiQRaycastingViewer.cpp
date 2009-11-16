@@ -24,7 +24,7 @@ ibiQRaycastingViewer::~ibiQRaycastingViewer()
 
 }
 
-void ibiQRaycastingViewer::init()
+void ibiQRaycastingViewer::ibi_init()
 {
 	initGlew();
 	initCG();

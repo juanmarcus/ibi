@@ -20,7 +20,7 @@ void ibiQFunctorGLViewer::draw()
 	drawer(this);
 }
 
-void ibiQFunctorGLViewer::init()
+void ibiQFunctorGLViewer::ibi_init()
 {
 	initer(this);
 }

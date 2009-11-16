@@ -4,6 +4,7 @@
 #include "ibi.h"
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/GLMode2D.h"
+#include "ibi_texturemanager/TextureManager.h"
 #include "ibi_geometry/Vector3.h"
 #include <QGLViewer/qglviewer.h>
 
@@ -23,7 +24,8 @@ public:
 			const QGLWidget *shareWidget = 0, Qt::WFlags flags = 0);
 	~ibiQGLViewer();
 
-	//==============================================
+	void init();
+	virtual void ibi_init();
 
 	/*
 	 * Starts drawing in 2D.
@@ -58,7 +60,13 @@ public:
 
 	void restoreViewport();
 
+	Texture* loadTexture(TextureLoadingInfo& info);
+
+	void loadPlugin(String filename);
+
 private:
+	TextureManager* textureManager;
+
 	GLMode2D mode2d;
 
 	int savedViewport[4];

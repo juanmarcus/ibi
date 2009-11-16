@@ -22,7 +22,7 @@ public:
 	ibiQRaycastingViewer(QWidget *parent = 0);
 	~ibiQRaycastingViewer();
 
-	void init();
+	void ibi_init();
 	void initGlew();
 	void initCG();
 	void initFramebuffer();

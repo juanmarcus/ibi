@@ -37,7 +37,7 @@ public:
 	~ibiQFunctorGLViewer();
 
 	void draw();
-	void init();
+	void ibi_init();
 private:
 	InitializeFunctor& initer;
 	DrawFunctor& drawer;

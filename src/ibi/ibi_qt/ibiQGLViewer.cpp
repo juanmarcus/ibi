@@ -28,6 +28,18 @@ ibiQGLViewer::~ibiQGLViewer()
 {
 }
 
+void ibiQGLViewer::init()
+{
+	textureManager = TextureManager::getInstance();
+
+	ibi_init();
+}
+
+void ibiQGLViewer::ibi_init()
+{
+
+}
+
 void ibiQGLViewer::start2DMode()
 {
 	mode2d.enable();
@@ -118,6 +130,16 @@ void ibiQGLViewer::restoreViewport()
 {
 	glViewport(savedViewport[0], savedViewport[1], savedViewport[2],
 			savedViewport[3]);
+}
+
+Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
+{
+	return textureManager->load(info);
+}
+
+void ibiQGLViewer::loadPlugin(String filename)
+{
+	textureManager->loadPlugin(filename);
 }
 
 } // namespace ibi
