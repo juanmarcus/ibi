@@ -250,7 +250,12 @@ void ibiQRaycastingViewer::render_buffer_to_screen()
 void ibiQRaycastingViewer::draw()
 {
 	// do not draw if volume or transfer function not set
-	if (!this->volume and !this->transfer_function)
+	if (!this->volume)
+	{
+		return;
+	}
+
+	if (!this->transfer_function)
 	{
 		return;
 	}
