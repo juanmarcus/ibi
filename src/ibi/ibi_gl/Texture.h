@@ -51,6 +51,7 @@ public:
 	Texture();
 	~Texture();
 
+	void setGLName(GLuint name);
 	void setTarget(GLenum target);
 	void setDimensions(int w, int h = 0, int d = 0);
 

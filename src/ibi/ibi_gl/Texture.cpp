@@ -24,6 +24,11 @@ Texture::~Texture()
 	glDeleteTextures(1, &glname);
 }
 
+void Texture::setGLName(GLuint name)
+{
+	this->glname = name;
+}
+
 void Texture::setTarget(GLenum target)
 {
 	this->target = target;
