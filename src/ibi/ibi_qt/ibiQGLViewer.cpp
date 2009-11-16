@@ -1,25 +1,30 @@
 #include "ibiQGLViewer.h"
 
+#include "ibi_error/Exception.h"
+
 namespace ibi
 {
 
 ibiQGLViewer::ibiQGLViewer(QWidget *parent, const QGLWidget *shareWidget,
 		Qt::WFlags flags) :
-	QGLViewer(parent, shareWidget, flags), desiredAspectRatio(0.0)
+	QGLViewer(parent, shareWidget, flags), textureManager(0),
+			desiredAspectRatio(0.0)
 {
 
 }
 
 ibiQGLViewer::ibiQGLViewer(QGLContext *context, QWidget *parent,
 		const QGLWidget *shareWidget, Qt::WFlags flags) :
-	QGLViewer(context, parent, shareWidget, flags), desiredAspectRatio(0.0)
+	QGLViewer(context, parent, shareWidget, flags), textureManager(0),
+			desiredAspectRatio(0.0)
 {
 
 }
 
 ibiQGLViewer::ibiQGLViewer(const QGLFormat &format, QWidget *parent,
 		const QGLWidget *shareWidget, Qt::WFlags flags) :
-	QGLViewer(format, parent, shareWidget, flags), desiredAspectRatio(0.0)
+	QGLViewer(format, parent, shareWidget, flags), textureManager(0),
+			desiredAspectRatio(0.0)
 {
 
 }
@@ -139,7 +144,7 @@ Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
 
 void ibiQGLViewer::loadPlugin(String filename)
 {
-	textureManager->loadPlugin(filename);
+	TextureManager::getInstance()->loadPlugin(filename);
 }
 
 } // namespace ibi

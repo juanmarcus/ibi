@@ -89,8 +89,7 @@ void ibiQRaycastingViewer::initFramebuffer()
 	framebuffer.enable();
 
 	// Start texture manager
-	textureManager = TextureManager::getInstance();
-	textureManager->loadPlugin("../ibi/build/lib/libtexture_loader_empty.so");
+	loadPlugin("../ibi/build/lib/libtexture_loader_empty.so");
 
 	// Render textures specifications
 	TextureLoadingInfo info;
@@ -103,13 +102,13 @@ void ibiQRaycastingViewer::initFramebuffer()
 	info.options["type"] = GL_FLOAT;
 
 	// Backface
-	backface = textureManager->load(info);
+	backface = loadTexture(info);
 	backface->enable();
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	backface->disable();
 
 	// Final image
-	final_image = textureManager->load(info);
+	final_image = loadTexture(info);
 	final_image->enable();
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	final_image->disable();

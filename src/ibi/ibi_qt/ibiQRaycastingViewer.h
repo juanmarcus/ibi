@@ -50,7 +50,6 @@ private:
 	bool toggle_visuals;
 
 	// Textures
-	TextureManager* textureManager;
 	Texture* volume;
 	Texture* backface;
 	Texture* final_image;
