@@ -276,4 +276,22 @@ void ibiQRaycastingViewer::setTransferFunction(Texture* t)
 	this->transfer_function = t;
 }
 
+void ibiQRaycastingViewer::setTransferFunction(QImage img)
+{
+	makeCurrent();
+
+	QImage imggl = QGLWidget::convertToGLFormat(img);
+	Texture* t = new Texture();
+	t->setTarget(GL_TEXTURE_1D);
+	t->init();
+
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA, imggl.width(), 0, GL_RGBA,
+			GL_UNSIGNED_BYTE, imggl.bits());
+
+	t->setDimensions(imggl.width());
+	setTransferFunction(t);
+
+	t->disable();
+}
+
 } // namespace ibi

@@ -32,6 +32,7 @@ public:
 
 	void setVolume(Texture* t);
 	void setTransferFunction(Texture* t);
+	void setTransferFunction(QImage img);
 
 private:
 	//draw geometry
