@@ -5,14 +5,15 @@
  *      Author: juanmarcus
  */
 
-#ifndef IBI_INTERNAL_H_
-#define IBI_INTERNAL_H_
+#ifndef IBI_H_
+#define IBI_H_
 
 #include "ibi_common/common.h"
 
 namespace ibi
 {
-
+class CommandLineParser;
+class Exception;
 } // namespace ibi
 
-#endif /* IBI_INTERNAL_H_ */
+#endif /* IBI_H_ */
