@@ -139,6 +139,7 @@ void ibiQGLViewer::restoreViewport()
 
 Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
 {
+	makeCurrent();
 	return textureManager->load(info);
 }
 

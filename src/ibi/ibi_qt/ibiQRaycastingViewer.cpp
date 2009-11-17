@@ -268,6 +268,10 @@ void ibiQRaycastingViewer::draw()
 
 void ibiQRaycastingViewer::setVolume(Texture* t)
 {
+	if (this->volume)
+	{
+		delete this->volume;
+	}
 	this->volume = t;
 }
 
