@@ -24,8 +24,7 @@ public:
 			const QGLWidget *shareWidget = 0, Qt::WFlags flags = 0);
 	~ibiQGLViewer();
 
-	void init();
-	virtual void ibi_init();
+	//	void init();
 
 	/*
 	 * Starts drawing in 2D.
@@ -65,8 +64,6 @@ public:
 	void loadPlugin(String filename);
 
 private:
-	TextureManager* textureManager;
-
 	GLMode2D mode2d;
 
 	int savedViewport[4];

@@ -7,42 +7,27 @@ namespace ibi
 
 ibiQGLViewer::ibiQGLViewer(QWidget *parent, const QGLWidget *shareWidget,
 		Qt::WFlags flags) :
-	QGLViewer(parent, shareWidget, flags), textureManager(0),
-			desiredAspectRatio(0.0)
+	QGLViewer(parent, shareWidget, flags), desiredAspectRatio(0.0)
 {
 
 }
 
 ibiQGLViewer::ibiQGLViewer(QGLContext *context, QWidget *parent,
 		const QGLWidget *shareWidget, Qt::WFlags flags) :
-	QGLViewer(context, parent, shareWidget, flags), textureManager(0),
-			desiredAspectRatio(0.0)
+	QGLViewer(context, parent, shareWidget, flags), desiredAspectRatio(0.0)
 {
 
 }
 
 ibiQGLViewer::ibiQGLViewer(const QGLFormat &format, QWidget *parent,
 		const QGLWidget *shareWidget, Qt::WFlags flags) :
-	QGLViewer(format, parent, shareWidget, flags), textureManager(0),
-			desiredAspectRatio(0.0)
+	QGLViewer(format, parent, shareWidget, flags), desiredAspectRatio(0.0)
 {
 
 }
 
 ibiQGLViewer::~ibiQGLViewer()
 {
-}
-
-void ibiQGLViewer::init()
-{
-	textureManager = TextureManager::getInstance();
-
-	ibi_init();
-}
-
-void ibiQGLViewer::ibi_init()
-{
-
 }
 
 void ibiQGLViewer::start2DMode()
@@ -140,7 +125,7 @@ void ibiQGLViewer::restoreViewport()
 Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
 {
 	makeCurrent();
-	return textureManager->load(info);
+	return TextureManager::getInstance()->load(info);
 }
 
 void ibiQGLViewer::loadPlugin(String filename)
