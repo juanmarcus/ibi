@@ -1,33 +1,33 @@
 /*
- * Framebuffer.cpp
+ * FramebufferObject.cpp
  *
  *  Created on: Nov 5, 2009
  *      Author: juanmarcus
  */
 
-#include "Framebuffer.h"
+#include "FramebufferObject.h"
 #include "ibi_error/Exception.h"
 
 namespace ibi
 {
 
-Framebuffer::Framebuffer() :
+FramebufferObject::FramebufferObject() :
 	enabled(false)
 {
 	glewInit();
 }
 
-Framebuffer::~Framebuffer()
+FramebufferObject::~FramebufferObject()
 {
 	glDeleteFramebuffersEXT(1, &name);
 }
 
-void Framebuffer::init()
+void FramebufferObject::init()
 {
 	glGenFramebuffersEXT(1, &name);
 }
 
-void Framebuffer::bind()
+void FramebufferObject::bind()
 {
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, name);
 	// Bind target texture
@@ -40,12 +40,12 @@ void Framebuffer::bind()
 	enabled = true;
 }
 
-void Framebuffer::release()
+void FramebufferObject::release()
 {
 	if (!enabled)
 	{
-		throw Exception("Framebuffer.cpp", "Problem finishing render.",
-				"Trying to operate on a disabled framebuffer object.");
+		throw Exception("FramebufferObject.cpp", "Problem finishing render.",
+				"Trying to operate on a disabled FramebufferObject object.");
 	}
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 	// Restore old viewport
@@ -53,19 +53,20 @@ void Framebuffer::release()
 	enabled = false;
 }
 
-void Framebuffer::setTarget(Texture* t)
+void FramebufferObject::setTarget(Texture* t)
 {
 	this->target = t;
 }
 
-void Framebuffer::checkStatus()
+void FramebufferObject::checkStatus()
 {
 	GLenum status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 
 	if (status != GL_FRAMEBUFFER_COMPLETE_EXT)
 	{
-		throw Exception("Framebuffer.cpp", "Framebuffer consistence problem.",
-				"Framebuffer state incomplete.");
+		throw Exception("FramebufferObject.cpp",
+				"FramebufferObject consistence problem.",
+				"FramebufferObject state incomplete.");
 	}
 }
 

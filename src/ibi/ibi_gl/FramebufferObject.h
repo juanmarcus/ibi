@@ -1,12 +1,12 @@
 /*
- * Framebuffer.h
+ * FramebufferObject.h
  *
  *  Created on: Nov 5, 2009
  *      Author: juanmarcus
  */
 
-#ifndef FRAMEBUFFER_H_
-#define FRAMEBUFFER_H_
+#ifndef FramebufferObject_H_
+#define FramebufferObject_H_
 
 #include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
@@ -15,11 +15,11 @@
 namespace ibi
 {
 
-class Framebuffer
+class FramebufferObject
 {
 public:
-	Framebuffer();
-	~Framebuffer();
+	FramebufferObject();
+	~FramebufferObject();
 
 	void init();
 
@@ -51,4 +51,4 @@ private:
 
 } // namespace ibi
 
-#endif /* FRAMEBUFFER_H_ */
+#endif /* FramebufferObject_H_ */
