@@ -41,6 +41,9 @@ class TextureLoader_nrrd3D: public TextureLoader
 		//		GLuint name = texture->getGLName();
 
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glTexParameteri(info.target, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(info.target, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_BORDER);
+		glTexParameteri(info.target, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 		glTexImage3D(info.target, 0, GL_ALPHA, width, height, depth, 0,
 				GL_ALPHA, convert_type_to_enum(nin->type), nin->data);
 

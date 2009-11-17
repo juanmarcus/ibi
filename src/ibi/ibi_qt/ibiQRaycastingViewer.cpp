@@ -284,6 +284,7 @@ void ibiQRaycastingViewer::setTransferFunction(QImage img)
 	Texture* t = new Texture();
 	t->setTarget(GL_TEXTURE_1D);
 	t->init();
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
 
 	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA, imggl.width(), 0, GL_RGBA,
 			GL_UNSIGNED_BYTE, imggl.bits());
