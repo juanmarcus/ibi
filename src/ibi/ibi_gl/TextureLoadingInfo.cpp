@@ -28,6 +28,10 @@ TextureLoadingInfo::TextureLoadingInfo()
 
 TextureLoadingInfo::~TextureLoadingInfo()
 {
+	if (destroydata)
+	{
+		delete[] (char*) data;
+	}
 
 }
 

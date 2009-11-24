@@ -31,12 +31,6 @@ public:
 		load(t, info.level, info.internalformat, info.border, info.format,
 				info.type, info.data);
 
-		if (info.destroydata)
-		{
-			delete[] (char*)info.data;
-			info.data = 0;
-		}
-
 		return t;
 	}
 
