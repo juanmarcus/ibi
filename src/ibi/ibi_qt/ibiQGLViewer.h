@@ -4,7 +4,8 @@
 #include "ibi_internal.h"
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/GLMode2D.h"
-#include "ibi_texturemanager/TextureManager.h"
+#include "ibi_gl/Texture.h"
+#include "ibi_gl/TextureLoadingInfo.h"
 #include "ibi_geometry/Vector3.h"
 #include <QGLViewer/qglviewer.h>
 
@@ -60,8 +61,6 @@ public:
 	void restoreViewport();
 
 	Texture* loadTexture(TextureLoadingInfo& info);
-
-	void loadPlugin(String filename);
 
 private:
 	GLMode2D mode2d;

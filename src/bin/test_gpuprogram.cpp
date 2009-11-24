@@ -9,7 +9,6 @@
 #include <QtGui/QApplication>
 #include <iostream>
 #include "ibi_qt/ibiQFunctorGLViewer.h"
-#include "ibi_texturemanager/TextureManager.h"
 #include "ibi_gl/Texture.h"
 #include "ibi_gpuprogrammanager/GPUProgramManager.h"
 #include "ibi_test_utils/TestScene.h"

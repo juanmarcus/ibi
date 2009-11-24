@@ -14,7 +14,7 @@ namespace ibi
 using namespace std;
 
 Texture::Texture() :
-	glname(0), width(0), height(0), depth(0)
+	glname(0), dimension(2), width(0), height(0), depth(0)
 {
 	target = GL_TEXTURE_2D;
 }
@@ -41,6 +41,16 @@ void Texture::setDimensions(int w, int h, int d)
 	this->depth = d;
 }
 
+void Texture::setDimension(int dim)
+{
+	this->dimension = dim;
+}
+
+int Texture::getDimension()
+{
+	return dimension;
+}
+
 int Texture::getWidth()
 {
 	return this->width;
@@ -49,6 +59,11 @@ int Texture::getWidth()
 int Texture::getHeight()
 {
 	return this->height;
+}
+
+int Texture::getDepth()
+{
+	return this->depth;
 }
 
 GLuint Texture::getGLName()
@@ -84,11 +99,6 @@ void Texture::init()
 {
 	// Generate a name
 	glGenTextures(1, &this->glname);
-	// Make current
-	enable();
-	// Set texture properties
-	glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 }
 
 } // namespace ibi

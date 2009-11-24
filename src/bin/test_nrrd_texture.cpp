@@ -11,7 +11,7 @@
 #include <teem/nrrd.h>
 #include "ibi_qt/ibiQFunctorGLViewer.h"
 #include "ibi_gl/Texture.h"
-#include "ibi_texturemanager/TextureManager.h"
+#include "ibi_gl/TextureLoader.h"
 #include "ibi_gl/GLMode2D.h"
 
 using namespace std;
@@ -66,14 +66,9 @@ struct init
 		}
 
 		TextureLoadingInfo tinfo;
-		tinfo.texture_type = "nrrd";
 		tinfo.target = GL_TEXTURE_2D;
-		tinfo.options["nrrd"] = nin;
 
-		TextureManager* manager = TextureManager::getInstance();
-		manager->loadPlugin("build/lib/libtexture_loader_nrrd.so");
-
-		t = manager->load(tinfo);
+		t = TextureLoader::load(tinfo);
 
 		widget->setDesiredAspectRatio(1.0);
 	}

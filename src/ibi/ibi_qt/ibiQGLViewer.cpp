@@ -1,6 +1,7 @@
 #include "ibiQGLViewer.h"
 
 #include "ibi_error/Exception.h"
+#include "ibi_gl/TextureLoader.h"
 
 namespace ibi
 {
@@ -125,12 +126,7 @@ void ibiQGLViewer::restoreViewport()
 Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
 {
 	makeCurrent();
-	return TextureManager::getInstance()->load(info);
-}
-
-void ibiQGLViewer::loadPlugin(String filename)
-{
-	TextureManager::getInstance()->loadPlugin(filename);
+	return TextureLoader::load(info);
 }
 
 } // namespace ibi

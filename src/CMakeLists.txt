@@ -11,7 +11,7 @@ ADD_SUBDIRECTORY (ibi)
 SET (LIBS ${LIBS} ibi)
 
 # Build plugins
-ADD_SUBDIRECTORY (plugins)
+#ADD_SUBDIRECTORY (plugins)
 
 
 # Build executables

@@ -16,34 +16,6 @@
 namespace ibi
 {
 
-/*
- * Loading time information for textures.
- */
-struct TextureLoadingInfo
-{
-	/*
-	 * Texture type.
-	 *
-	 * Used to select the loading plugin.
-	 */
-	std::string texture_type;
-
-	/*
-	 * Target GL enum.
-	 *
-	 * For instance GL_TEXTURE_2D.
-	 */
-	GLenum target;
-
-	/*
-	 * Custom loading options.
-	 *
-	 * Each plugin checks for the options it needs.
-	 */
-	std::map<String, boost::any> options;
-
-};
-
 class Texture
 {
 	friend class TextureLoader;
@@ -54,11 +26,14 @@ public:
 	void setGLName(GLuint name);
 	void setTarget(GLenum target);
 	void setDimensions(int w, int h = 0, int d = 0);
+	void setDimension(int dim);
 
 	GLuint getGLName();
 	GLenum getTarget();
+	int getDimension();
 	int getWidth();
 	int getHeight();
+	int getDepth();
 
 	void init();
 	void enable();
@@ -75,6 +50,11 @@ private:
 	 * Defaults to GL_TEXTURE_2D.
 	 */
 	GLenum target;
+
+	/*
+	 * Texture dimension.
+	 */
+	int dimension;
 
 	/*
 	 * Texture width in pixels.

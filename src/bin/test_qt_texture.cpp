@@ -9,7 +9,7 @@
 #include <QtGui/QApplication>
 #include <iostream>
 #include "ibi_qt/ibiQFunctorGLViewer.h"
-#include "ibi_texturemanager/TextureManager.h"
+#include "ibi_gl/TextureLoader.h"
 #include "ibi_gl/Texture.h"
 
 using namespace std;
@@ -38,14 +38,9 @@ struct init
 	void operator()(ibiQGLViewer* widget)
 	{
 		TextureLoadingInfo tinfo;
-		tinfo.texture_type = "qt";
 		tinfo.target = GL_TEXTURE_2D;
-		tinfo.options["filename"] = String("data/image.png");
 
-		TextureManager* manager = TextureManager::getInstance();
-		manager->loadPlugin("build/lib/libtexture_loader_qt.so");
-
-		t = manager->load(tinfo);
+		t = TextureLoader::load(tinfo);
 
 		widget->setDesiredAspectRatio(1.0);
 	}
