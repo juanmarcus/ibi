@@ -83,6 +83,11 @@ public:
 	 * Actual data.
 	 */
 	void* data;
+
+	/*
+	 * Determines of data should be destroyed after loading.
+	 */
+	bool destroydata;
 };
 
 } // namespace ibi

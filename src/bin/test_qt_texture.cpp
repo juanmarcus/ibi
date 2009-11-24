@@ -11,6 +11,7 @@
 #include "ibi_qt/ibiQFunctorGLViewer.h"
 #include "ibi_gl/TextureLoader.h"
 #include "ibi_gl/Texture.h"
+#include "ibi_qt/TextureConfigurator_Qt.h"
 
 using namespace std;
 using namespace ibi;
@@ -37,10 +38,10 @@ struct init
 {
 	void operator()(ibiQGLViewer* widget)
 	{
-		TextureLoadingInfo tinfo;
-		tinfo.target = GL_TEXTURE_2D;
+		TextureLoadingInfo info = TextureConfigurator_Qt::fromFilename(
+				"data/image.png");
 
-		t = TextureLoader::load(tinfo);
+		t = TextureLoader::load(info);
 
 		widget->setDesiredAspectRatio(1.0);
 	}

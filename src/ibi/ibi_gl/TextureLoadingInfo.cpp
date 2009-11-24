@@ -23,6 +23,7 @@ TextureLoadingInfo::TextureLoadingInfo()
 	format = GL_RGBA;
 	type = GL_FLOAT;
 	data = 0;
+	destroydata = false;
 }
 
 TextureLoadingInfo::~TextureLoadingInfo()
