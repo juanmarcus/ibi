@@ -38,6 +38,11 @@ void SceneNode::setParentSceneNode(SceneNode* node)
 	this->parent = node;
 }
 
+void SceneNode::setRenderable(Renderable* renderable)
+{
+	this->renderable = renderable;
+}
+
 SceneNode* SceneNode::getParentSceneNode()
 {
 	return parent;
@@ -51,6 +56,11 @@ Renderable* SceneNode::getRenderable()
 Matrix4 SceneNode::getTransformation()
 {
 	return transform;
+}
+
+std::vector<SceneNode*> SceneNode::getChildren()
+{
+	return children;
 }
 
 void SceneNode::update()

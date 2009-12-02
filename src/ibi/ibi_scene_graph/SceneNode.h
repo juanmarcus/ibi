@@ -26,10 +26,12 @@ public:
 	void addChildSceneNode(SceneNode* node);
 
 	void setParentSceneNode(SceneNode* node);
+	void setRenderable(Renderable* renderable);
 
 	SceneNode* getParentSceneNode();
 	Matrix4 getTransformation();
 	Renderable* getRenderable();
+	std::vector<SceneNode*> getChildren();
 
 	void update();
 private:

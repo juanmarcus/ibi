@@ -38,7 +38,13 @@ void RenderSystem::renderSceneNode(SceneNode* node)
 	{
 		renderRenderable(renderable);
 	}
-	// recurse to all children
+	std::vector<SceneNode*> children = node->getChildren();
+	std::vector<SceneNode*>::iterator it = children.begin();
+	std::vector<SceneNode*>::iterator itEnd = children.end();
+	for (; it != itEnd; ++it)
+	{
+		renderSceneNode(*it);
+	}
 	resetTransform();
 }
 
