@@ -22,7 +22,7 @@ public:
 
 	SceneNode* getRootSceneNode();
 
-	void update();
+	void update(bool render = true);
 private:
 	/**
 	 * Root SceneNode.

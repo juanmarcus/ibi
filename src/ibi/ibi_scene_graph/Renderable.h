@@ -18,6 +18,8 @@ class Renderable
 public:
 	Renderable();
 	virtual ~Renderable();
+
+	virtual void render() = 0;
 };
 
 } // namespace ibi

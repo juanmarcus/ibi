@@ -25,9 +25,9 @@ SceneNode* SceneGraph::getRootSceneNode()
 	return rootSceneNode;
 }
 
-void SceneGraph::update()
+void SceneGraph::update(bool render)
 {
-	rootSceneNode->update();
+	rootSceneNode->update(render);
 }
 
 } // namespace ibi

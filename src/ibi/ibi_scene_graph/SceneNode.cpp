@@ -7,13 +7,16 @@
 
 #include "SceneNode.h"
 
+#include "ibi_gl/ibi_gl.h"
+#include "ibi_gl/GL.h"
+
 namespace ibi
 {
 
 SceneNode::SceneNode() :
 	parent(0), renderable(0)
 {
-	transform = Matrix4::IDENTITY;
+	translation = Vector3::ZERO;
 }
 
 SceneNode::~SceneNode()
@@ -43,6 +46,11 @@ void SceneNode::setRenderable(Renderable* renderable)
 	this->renderable = renderable;
 }
 
+void SceneNode::setTranslation(Vector3& translation)
+{
+	this->translation = translation;
+}
+
 SceneNode* SceneNode::getParentSceneNode()
 {
 	return parent;
@@ -53,23 +61,39 @@ Renderable* SceneNode::getRenderable()
 	return renderable;
 }
 
-Matrix4 SceneNode::getTransformation()
-{
-	return transform;
-}
-
 std::vector<SceneNode*> SceneNode::getChildren()
 {
 	return children;
 }
 
-void SceneNode::update()
+Vector3 SceneNode::getTranslation()
 {
+	return translation;
+}
+
+void SceneNode::update(bool render)
+{
+	if (render)
+	{
+		glPushMatrix();
+		GL::Translate(translation);
+
+		if (renderable)
+		{
+			renderable->render();
+		}
+	}
+
 	std::vector<SceneNode*>::iterator it = children.begin();
 	std::vector<SceneNode*>::iterator itEnd = children.end();
 	for (; it != itEnd; ++it)
 	{
-		(*it)->update();
+		(*it)->update(render);
+	}
+
+	if (render)
+	{
+		glPopMatrix();
 	}
 }
 

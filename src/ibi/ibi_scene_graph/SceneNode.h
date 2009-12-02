@@ -27,13 +27,14 @@ public:
 
 	void setParentSceneNode(SceneNode* node);
 	void setRenderable(Renderable* renderable);
+	void setTranslation(Vector3& translation);
 
 	SceneNode* getParentSceneNode();
-	Matrix4 getTransformation();
 	Renderable* getRenderable();
 	std::vector<SceneNode*> getChildren();
+	Vector3 getTranslation();
 
-	void update();
+	void update(bool render);
 private:
 	/*
 	 * Children SceneNodes.
@@ -51,9 +52,9 @@ private:
 	Renderable* renderable;
 
 	/*
-	 * SceneNode transformation relative to parent SceneNode.
+	 * SceneNode translation relative to parent.
 	 */
-	Matrix4 transform;
+	Vector3 translation;
 
 };
 
