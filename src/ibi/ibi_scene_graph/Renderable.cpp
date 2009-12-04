@@ -7,8 +7,7 @@
 
 #include "Renderable.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 Renderable::Renderable()
 {
@@ -20,4 +19,4 @@ Renderable::~Renderable()
 
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

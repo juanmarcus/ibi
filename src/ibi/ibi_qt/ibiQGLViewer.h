@@ -9,8 +9,7 @@
 #include "ibi_geometry/Vector3.h"
 #include <QGLViewer/qglviewer.h>
 
-namespace ibi
-{
+namespace ibi { // BEGIN_NAMESPACE_IBI
 
 class ibiQGLViewer: public QGLViewer
 {
@@ -70,6 +69,6 @@ private:
 	float desiredAspectRatio;
 };
 
-} // namespace ibi
+} // END_NAMESPACE_IBI
 
 #endif // IBIQTSMARTGLWIDGET_H

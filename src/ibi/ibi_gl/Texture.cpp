@@ -8,8 +8,7 @@
 #include "Texture.h"
 #include "ibi_error/Exception.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 using namespace std;
 
@@ -101,4 +100,4 @@ void Texture::init()
 	glGenTextures(1, &this->glname);
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

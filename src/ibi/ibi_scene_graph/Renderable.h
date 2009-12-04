@@ -10,8 +10,7 @@
 
 #include "ibi_internal.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Renderable
 {
@@ -22,6 +21,6 @@ public:
 	virtual void render() = 0;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* RENDERABLE_H_ */

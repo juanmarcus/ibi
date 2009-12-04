@@ -12,8 +12,7 @@
 #include <Cg/cg.h>
 #include "GPUProgram.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class VertexProgram: public GPUProgram
 {
@@ -22,6 +21,6 @@ public:
 	~VertexProgram();
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* VERTEXPROGRAM_H_ */

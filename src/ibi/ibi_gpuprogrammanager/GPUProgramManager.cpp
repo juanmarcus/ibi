@@ -13,8 +13,7 @@
 
 using namespace std;
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 GPUProgramManager::GPUProgramManager()
 {
@@ -99,4 +98,4 @@ void GPUProgramManager::checkError()
 	}
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

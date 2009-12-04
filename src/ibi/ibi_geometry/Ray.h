@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "Vector3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Ray
 {
@@ -65,6 +64,6 @@ public:
 	;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* RAY_H_ */

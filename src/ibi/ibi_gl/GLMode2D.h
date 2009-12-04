@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "ibi_gl.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GLMode2D
 {
@@ -35,6 +34,6 @@ private:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* GLMODE2D_H_ */

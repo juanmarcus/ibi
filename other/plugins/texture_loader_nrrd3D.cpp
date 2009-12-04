@@ -12,7 +12,7 @@
 #include <teem/nrrd.h>
 #include "nrrdGLutils.h"
 
-using namespace ibi;
+using BEGIN_NAMESPACE_IBI;
 
 class TextureLoader_nrrd3D: public TextureLoader
 {

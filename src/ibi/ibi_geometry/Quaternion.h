@@ -12,8 +12,7 @@
 #include "ibi_math/Math.h"
 #include <cassert>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Matrix3;
 class Vector3;
@@ -202,6 +201,6 @@ public:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* QUATERNION_H_ */

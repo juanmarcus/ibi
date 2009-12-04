@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "ibi_gl.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 /*
  * Loading time information for textures.
@@ -90,6 +89,6 @@ public:
 	bool destroydata;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TEXTURELOADINGINFO_H_ */

@@ -10,8 +10,7 @@
 #include <Cg/cgGL.h>
 #include "GPUProgramManager.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 GPUProgram::GPUProgram(GPUProgramManager* a_parent) :
 	parent(a_parent)
@@ -51,4 +50,4 @@ void GPUProgram::Parameter::setTexture(Texture* t)
 	cgGLEnableTextureParameter(cgparameter);
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

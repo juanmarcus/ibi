@@ -9,8 +9,7 @@
 #include <boost/algorithm/string.hpp>
 #include <iostream>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 using namespace std;
 using namespace boost;
@@ -79,4 +78,4 @@ void CommandLineParser::saveRequired(const char* name)
 	requiredOptions.push_back(tokens[0]);
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

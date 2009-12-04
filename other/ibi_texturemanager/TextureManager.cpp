@@ -9,7 +9,7 @@
 #include "ibi_error/Exception.h"
 #include <dlfcn.h>
 
-namespace ibi
+BEGIN_NAMESPACE_IBI
 {
 
 TextureManager* TextureManager::instance = 0;
@@ -102,4 +102,4 @@ Texture* TextureManager::load(TextureLoadingInfo& info)
 	return texture;
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

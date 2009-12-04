@@ -16,8 +16,7 @@
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Triangle.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GeometryDrawer
 {
@@ -52,6 +51,6 @@ private:
 	GLUquadric* quadric;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* GEOMETRYDRAWER_H_ */

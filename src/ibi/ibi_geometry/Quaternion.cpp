@@ -9,8 +9,7 @@
 #include "Vector3.h"
 #include "Matrix3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 const Real Quaternion::ms_fEpsilon = 1e-03;
 const Quaternion Quaternion::ZERO(0.0, 0.0, 0.0, 0.0);
@@ -577,4 +576,4 @@ Quaternion Quaternion::nlerp(Real fT, const Quaternion& rkP,
 	return result;
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

@@ -7,8 +7,7 @@
 
 #include "Matrix3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 const Real Matrix3::EPSILON = 1e-06;
 const Matrix3 Matrix3::ZERO(0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -1433,4 +1432,4 @@ void Matrix3::TensorProduct(const Vector3& rkU, const Vector3& rkV,
 	}
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

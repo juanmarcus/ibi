@@ -12,8 +12,7 @@
 #include <Cg/cg.h>
 #include "GPUProgram.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class FragmentProgram: public GPUProgram
 {
@@ -22,6 +21,6 @@ public:
 	~FragmentProgram();
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* FRAGMENTPROGRAM_H_ */

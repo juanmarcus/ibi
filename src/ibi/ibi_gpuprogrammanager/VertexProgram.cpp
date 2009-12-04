@@ -7,8 +7,7 @@
 
 #include "VertexProgram.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 VertexProgram::VertexProgram(GPUProgramManager* parent) :
 	GPUProgram(parent)
@@ -21,4 +20,4 @@ VertexProgram::~VertexProgram()
 
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

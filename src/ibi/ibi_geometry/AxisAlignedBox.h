@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "Vector3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class AxisAlignedBox
 {
@@ -574,6 +573,6 @@ public:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* AXISALIGNEDBOX_H_ */

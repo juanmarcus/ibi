@@ -10,10 +10,11 @@
 
 #include "ibi_common/common.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
+
 class CommandLineParser;
 class Exception;
-} // namespace ibi
+
+END_NAMESPACE_IBI
 
 #endif /* IBI_H_ */

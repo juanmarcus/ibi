@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include <exception>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Exception: public std::exception
 {
@@ -32,6 +31,6 @@ private:
 	String detail;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* EXCEPTION_H_ */

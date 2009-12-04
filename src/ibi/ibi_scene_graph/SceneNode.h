@@ -13,8 +13,7 @@
 #include "ibi_geometry/Matrix4.h"
 #include <vector>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class SceneNode
 {
@@ -58,6 +57,6 @@ private:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* SCENENODE_H_ */

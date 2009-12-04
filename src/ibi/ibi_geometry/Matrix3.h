@@ -12,8 +12,7 @@
 #include "Vector3.h"
 #include <memory>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Matrix3
 {
@@ -198,6 +197,6 @@ protected:
 	friend class Matrix4;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* MATRIX3_H_ */

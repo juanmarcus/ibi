@@ -14,8 +14,7 @@
 #include "VertexProgram.h"
 #include "FragmentProgram.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GPUProgramManager
 {
@@ -52,6 +51,6 @@ private:
 	CGprofile fragment_profile;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* GPUPROGRAMMANAGER_H_ */

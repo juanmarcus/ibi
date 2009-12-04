@@ -7,8 +7,7 @@
 
 #include "Matrix4.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 const Matrix4 Matrix4::ZERO(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -211,4 +210,4 @@ void Matrix4::makeInverseTransform(const Vector3& position,
 	m[3][3] = 1;
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

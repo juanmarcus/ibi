@@ -13,8 +13,7 @@
 #include "ibi_gl/Texture.h"
 #include <Cg/cg.h>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GPUProgramManager;
 
@@ -44,6 +43,6 @@ protected:
 	GPUProgramManager* parent;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* GPUPROGRAM_H_ */

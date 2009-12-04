@@ -7,8 +7,7 @@
 
 #include "TextureLoadingInfo.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 TextureLoadingInfo::TextureLoadingInfo()
 {

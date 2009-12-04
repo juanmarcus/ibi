@@ -9,8 +9,7 @@
 
 #include "GL.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 GeometryDrawer::GeometryDrawer()
 {
@@ -175,4 +174,4 @@ void GeometryDrawer::drawTriangle(const Triangle& t, float radius,
 	glPopMatrix();
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

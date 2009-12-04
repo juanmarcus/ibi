@@ -12,8 +12,7 @@
 #include "ibi_gl.h"
 #include "ibi_geometry/Vector3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GeometryDrawer2D
 {
@@ -25,6 +24,6 @@ public:
 			60);
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* GEOMETRYDRAWER2D_H_ */

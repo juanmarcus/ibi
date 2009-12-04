@@ -13,8 +13,7 @@
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Matrix3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class GL
 {
@@ -38,6 +37,6 @@ public:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* WRAPPER_H_ */

@@ -7,8 +7,7 @@
 
 #include "GeometryDrawer2D.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 GeometryDrawer2D::GeometryDrawer2D()
 {
@@ -36,4 +35,4 @@ void GeometryDrawer2D::drawCircle(Vector3& center, float radius,
 	glEnd();
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

@@ -13,8 +13,7 @@
 #include "ibi_geometry/AxisAlignedBox.h"
 #include "ibi_geometry/Triangle.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Intersection
 {
@@ -26,6 +25,6 @@ public:
 			const Triangle& triangle);
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* INTERSECTION_H_ */

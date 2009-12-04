@@ -14,8 +14,7 @@
 #include <limits>
 #include <algorithm>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Degree;
 class Radian;
@@ -509,6 +508,6 @@ inline Degree operator /(Real a, const Degree& b)
 	return Degree(a / b.valueDegrees());
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* MATH_H_ */

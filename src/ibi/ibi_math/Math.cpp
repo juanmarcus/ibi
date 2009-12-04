@@ -9,8 +9,7 @@
 
 #include <limits>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 const Real Math::POS_INFINITY = std::numeric_limits<Real>::infinity();
 const Real Math::NEG_INFINITY = -std::numeric_limits<Real>::infinity();
@@ -108,4 +107,4 @@ Real Math::gaussianDistribution(Real x, Real offset, Real scale)
 
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

@@ -12,7 +12,7 @@
 #include "ibi_factory/Factory.h"
 #include "ibi_gl/Texture.h"
 
-namespace ibi
+BEGIN_NAMESPACE_IBI
 {
 
 /*
@@ -29,6 +29,6 @@ public:
  */
 typedef Factory<TextureLoader> TextureLoaderFactory;
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TEXTURELOADER_H_ */

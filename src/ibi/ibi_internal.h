@@ -10,9 +10,8 @@
 
 #include "ibi_common/common.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* IBI_INTERNAL_H_ */

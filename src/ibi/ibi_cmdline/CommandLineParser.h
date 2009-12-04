@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include <boost/program_options.hpp>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 namespace po = boost::program_options;
 
@@ -52,6 +51,6 @@ private:
 	std::vector<String> requiredOptions;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* COMMANDLINEPARSER_H_ */

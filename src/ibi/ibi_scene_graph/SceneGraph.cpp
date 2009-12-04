@@ -7,8 +7,7 @@
 
 #include "SceneGraph.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 SceneGraph::SceneGraph()
 {
@@ -30,4 +29,4 @@ void SceneGraph::update(bool render)
 	rootSceneNode->update(render);
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

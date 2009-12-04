@@ -12,8 +12,7 @@
 #include "Vector3.h"
 #include "Matrix3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Matrix4
 {
@@ -665,6 +664,6 @@ public:
 //			+ v.z * mat[2][3] + v.w * mat[3][3]);
 //}
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* MATRIX4_H_ */

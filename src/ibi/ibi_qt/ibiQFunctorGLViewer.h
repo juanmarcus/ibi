@@ -6,8 +6,7 @@
 #include <boost/function.hpp>
 #include "ibiQGLViewer.h"
 
-namespace ibi
-{
+namespace ibi { // BEGIN_NAMESPACE_IBI
 
 typedef boost::function<void(ibiQGLViewer* widget)> DrawFunctor;
 typedef boost::function<void(ibiQGLViewer* widget)> InitializeFunctor;
@@ -43,6 +42,6 @@ private:
 	DrawFunctor& drawer;
 };
 
-} // namespace ibi
+} // END_NAMESPACE_IBI
 
 #endif // IBIQGLWIDGET_H

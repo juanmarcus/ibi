@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "Vector3.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Triangle
 {
@@ -50,6 +49,6 @@ private:
 	Vector3 vertices[3];
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TRIANGLE_H_ */

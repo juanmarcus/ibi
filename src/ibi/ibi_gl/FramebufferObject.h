@@ -12,8 +12,7 @@
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/Texture.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class FramebufferObject
 {
@@ -49,6 +48,6 @@ private:
 	int oldViewport[4];
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* FramebufferObject_H_ */

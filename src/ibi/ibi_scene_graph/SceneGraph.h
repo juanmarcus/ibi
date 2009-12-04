@@ -11,8 +11,7 @@
 #include "ibi_internal.h"
 #include "SceneNode.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class SceneGraph
 {
@@ -31,6 +30,6 @@ private:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* SCENEGRAPH_H_ */

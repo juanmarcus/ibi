@@ -7,11 +7,10 @@
 
 #include "AxisAlignedBox.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 const AxisAlignedBox AxisAlignedBox::BOX_NULL;
 const AxisAlignedBox AxisAlignedBox::BOX_INFINITE(
 		AxisAlignedBox::EXTENT_INFINITE);
 
-} // namespace ibi
+END_NAMESPACE_IBI

@@ -1,7 +1,6 @@
 #include "ibiQFunctorGLViewer.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 ibiQFunctorGLViewer::ibiQFunctorGLViewer(InitializeFunctor& a_initer,
 		DrawFunctor& a_painter) :
@@ -30,4 +29,4 @@ void ibiQFunctorGLViewer::init()
 //	resizer(this, w, h);
 //}
 
-} // namespace ibi
+END_NAMESPACE_IBI

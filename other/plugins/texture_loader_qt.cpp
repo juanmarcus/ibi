@@ -13,7 +13,7 @@
 #include <QtGui/QImage>
 #include <QtOpenGL/QGLWidget>
 
-using namespace ibi;
+using BEGIN_NAMESPACE_IBI;
 
 class TextureLoader_qt: public TextureLoader
 {

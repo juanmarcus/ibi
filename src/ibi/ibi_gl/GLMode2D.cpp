@@ -7,8 +7,7 @@
 
 #include "GLMode2D.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 GLMode2D::GLMode2D() :
 	active(false), width(0), height(0)
@@ -86,4 +85,4 @@ void GLMode2D::drawFullScreenQuad()
 	glEnd();
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

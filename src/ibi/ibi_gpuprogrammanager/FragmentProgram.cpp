@@ -7,8 +7,7 @@
 
 #include "FragmentProgram.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 FragmentProgram::FragmentProgram(GPUProgramManager* parent) :
 	GPUProgram(parent)
@@ -21,4 +20,4 @@ FragmentProgram::~FragmentProgram()
 
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

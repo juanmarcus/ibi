@@ -7,7 +7,6 @@
 
 #include "GL.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
-} // namespace ibi
+END_NAMESPACE_IBI

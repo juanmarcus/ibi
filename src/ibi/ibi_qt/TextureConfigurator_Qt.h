@@ -8,8 +8,7 @@
 #ifndef TEXTURECONFIGURATOR_QT_H_
 #define TEXTURECONFIGURATOR_QT_H_
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class TextureConfigurator_Qt
 {

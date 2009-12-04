@@ -8,8 +8,7 @@
 #include "FramebufferObject.h"
 #include "ibi_error/Exception.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 FramebufferObject::FramebufferObject() :
 	enabled(false)
@@ -70,4 +69,4 @@ void FramebufferObject::checkStatus()
 	}
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

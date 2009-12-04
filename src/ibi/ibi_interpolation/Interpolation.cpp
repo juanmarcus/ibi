@@ -7,8 +7,7 @@
 
 #include "Interpolation.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 Interpolation::Interpolation()
 {
@@ -21,4 +20,4 @@ Interpolation::~Interpolation()
 	// TODO Auto-generated destructor stub
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

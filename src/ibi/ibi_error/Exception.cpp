@@ -7,8 +7,7 @@
 
 #include "Exception.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 using namespace std;
 
@@ -25,4 +24,4 @@ Exception::~Exception() throw ()
 
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

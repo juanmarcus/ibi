@@ -8,7 +8,7 @@
 #ifndef FACTORY_H_
 #define FACTORY_H_
 
-namespace ibi
+BEGIN_NAMESPACE_IBI
 {
 
 template<typename Interface>
@@ -18,6 +18,6 @@ public:
 	virtual Interface* create() = 0;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* FACTORY_H_ */

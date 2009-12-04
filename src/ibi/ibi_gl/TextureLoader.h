@@ -13,8 +13,7 @@
 #include "Texture.h"
 #include "TextureLoadingInfo.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class TextureLoader
 {
@@ -88,6 +87,6 @@ private:
 	}
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TEXTURELOADER_H_ */

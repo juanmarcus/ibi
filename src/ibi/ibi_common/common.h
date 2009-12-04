@@ -11,8 +11,10 @@
 #include <utility>
 #include <string>
 
-namespace ibi
-{
+#define BEGIN_NAMESPACE_IBI namespace ibi {
+#define END_NAMESPACE_IBI }
+
+BEGIN_NAMESPACE_IBI
 
 //-----------------------------------------------------------------------------
 // Number
@@ -35,6 +37,6 @@ typedef std::pair<Real, Real> RealPair;
  */
 typedef std::string String;
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* IBI_BASE_H_ */

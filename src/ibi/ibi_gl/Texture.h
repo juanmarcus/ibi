@@ -13,8 +13,7 @@
 #include <boost/any.hpp>
 #include <map>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Texture
 {
@@ -74,6 +73,6 @@ private:
 	int depth;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TEXTURE_H_ */

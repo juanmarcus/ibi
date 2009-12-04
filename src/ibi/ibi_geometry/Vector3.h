@@ -14,8 +14,7 @@
 #include "Quaternion.h"
 #include <iostream>
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Vector3
 {
@@ -703,6 +702,6 @@ public:
 
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* VECTOR3_H_ */

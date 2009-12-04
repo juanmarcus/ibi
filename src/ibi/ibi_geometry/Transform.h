@@ -12,8 +12,7 @@
 #include "Ray.h"
 #include "Matrix4.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Transform
 {
@@ -29,6 +28,6 @@ public:
 	}
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TRANSFORM_H_ */

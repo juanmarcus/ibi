@@ -13,8 +13,7 @@
 #include "ibi_geometry/Vector3.h"
 #include "ibi_geometry/Ray.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 class Interpolation
 {
@@ -47,6 +46,6 @@ public:
 	}
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* INTERPOLATION_H_ */

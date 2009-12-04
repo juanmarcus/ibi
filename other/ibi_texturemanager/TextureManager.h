@@ -12,7 +12,7 @@
 #include <vector>
 #include "TextureLoader.h"
 
-namespace ibi
+BEGIN_NAMESPACE_IBI
 {
 
 class TextureManager
@@ -37,6 +37,6 @@ private:
 	static TextureManager* instance;
 };
 
-} // namespace ibi
+END_NAMESPACE_IBI
 
 #endif /* TEXTUREMANAGER_H_ */

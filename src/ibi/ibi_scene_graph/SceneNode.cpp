@@ -10,8 +10,7 @@
 #include "ibi_gl/ibi_gl.h"
 #include "ibi_gl/GL.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 SceneNode::SceneNode() :
 	parent(0), renderable(0)
@@ -97,4 +96,4 @@ void SceneNode::update(bool render)
 	}
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

@@ -13,7 +13,7 @@
 
 #include <iostream>
 
-using namespace ibi;
+using BEGIN_NAMESPACE_IBI;
 
 class TextureLoader_empty: public TextureLoader
 {

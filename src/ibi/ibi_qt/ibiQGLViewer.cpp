@@ -3,8 +3,7 @@
 #include "ibi_error/Exception.h"
 #include "ibi_gl/TextureLoader.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 ibiQGLViewer::ibiQGLViewer(QWidget *parent, const QGLWidget *shareWidget,
 		Qt::WFlags flags) :
@@ -129,4 +128,4 @@ Texture* ibiQGLViewer::loadTexture(TextureLoadingInfo& info)
 	return TextureLoader::load(info);
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI

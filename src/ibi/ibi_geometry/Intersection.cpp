@@ -7,8 +7,7 @@
 
 #include "Intersection.h"
 
-namespace ibi
-{
+BEGIN_NAMESPACE_IBI
 
 std::pair<bool, RealPair> Intersection::intersects(const Ray& ray,
 		const AxisAlignedBox& box)
@@ -149,4 +148,4 @@ std::pair<bool, Real> Intersection::intersects(const Ray& ray,
 	return std::pair<bool, Real>(true, r); // I is in T
 }
 
-} // namespace ibi
+END_NAMESPACE_IBI
